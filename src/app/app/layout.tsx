@@ -7,15 +7,17 @@ export default function AppLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <SidebarProvider>
-       <AppSidebar />
+    <>
       <SignedIn>
-        {/*all main components here*/}
-        {children}
+        <SidebarProvider>
+          <AppSidebar />
+          {/*all main components here*/}
+          {children}
+        </SidebarProvider>
       </SignedIn>
       <SignedOut>
         <RedirectToSignIn />
       </SignedOut>
-    </SidebarProvider>
+    </>
   );
 }
