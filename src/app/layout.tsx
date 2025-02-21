@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import * as React from "react";
 import { Toaster } from "~/components/ui/sonner";
-import { ThemeProvider } from "~/providers/theme-provider";
+import { ThemeProvider } from "~/components/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
