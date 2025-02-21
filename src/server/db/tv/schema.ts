@@ -13,7 +13,7 @@ export const tv = pgTable("tv", {
     .primaryKey()
     .$default(() => generateId(IdPrefix.TV)),
   name: varchar("name", { length: 256 }),
-  usage: decimal("usage", { precision: 10, scale: 2 }).notNull(),
+  usage: decimal("usage", { precision: 10, scale: 2 }).notNull().default("0"),
   type: varchar("type", { length: 256 }),
   ownerId: varchar("owner_id", { length: 256 }).notNull(),
   createdAt: integer("created_at")
