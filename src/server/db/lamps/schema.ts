@@ -11,7 +11,7 @@ import IdPrefix, { generateId } from "~/lib/ids";
 export const lamps = pgTable("lamps", {
   id: varchar("id", { length: 256 })
     .primaryKey()
-    .$default(() => generateId(IdPrefix.COMPUTER)),
+    .$default(() => generateId(IdPrefix.LAMPS)),
   groupName: varchar("group_name", { length: 256 }),
   usage: decimal("usage", { precision: 10, scale: 2 }).notNull(),
   status: boolean("status").notNull().default(false),

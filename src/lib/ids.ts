@@ -1,5 +1,8 @@
 enum IdPrefix {
   COMPUTER = "pc_",
+  LAMPS = "lamp_",
+  TV = "tv_",
+  ABSENTEE = "abs_",
 }
 
 export default IdPrefix;

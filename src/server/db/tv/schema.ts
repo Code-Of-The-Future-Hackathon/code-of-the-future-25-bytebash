@@ -11,7 +11,7 @@ import IdPrefix, { generateId } from "~/lib/ids";
 export const tv = pgTable("tv", {
   id: varchar("id", { length: 256 })
     .primaryKey()
-    .$default(() => generateId(IdPrefix.COMPUTER)),
+    .$default(() => generateId(IdPrefix.TV)),
   name: varchar("name", { length: 256 }),
   usage: decimal("usage", { precision: 10, scale: 2 }).notNull(),
   type: varchar("type", { length: 256 }),
