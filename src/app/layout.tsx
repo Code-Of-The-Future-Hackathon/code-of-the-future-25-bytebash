@@ -1,9 +1,8 @@
 import "~/styles/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import * as React from "react";
-import { Toaster } from "~/components/ui/sonner";
+import { ProvidersWithoutTheme } from "~/components/providers/providers-without-theme";
 import { ThemeProvider } from "~/components/providers/theme-provider";
 
 export const metadata: Metadata = {
@@ -16,20 +15,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" className={`${GeistSans.variable}`}>
-        <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" className={`${GeistSans.variable}`}>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ProvidersWithoutTheme>{children}</ProvidersWithoutTheme>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
