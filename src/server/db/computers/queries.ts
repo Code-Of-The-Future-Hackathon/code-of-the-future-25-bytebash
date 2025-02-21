@@ -20,7 +20,7 @@ interface ComputerGetAllProps {
   ownerId: string;
 }
 
-export async function computerGetAll({ ownerId }: ComputerGetAllProps) {
+export async function computersGetAll({ ownerId }: ComputerGetAllProps) {
   return db.select().from(computers).where(
     eq(computers.ownerId, ownerId), // Ensure ownership
   );
