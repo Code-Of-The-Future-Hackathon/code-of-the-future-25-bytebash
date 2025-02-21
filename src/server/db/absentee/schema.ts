@@ -17,4 +17,5 @@ export const absentee = pgTable("absentee", {
   absent: varchar("absent", { length: 256 }),
   classStart: date("class-start"),
   classEnd: date("class-start"),
+  ownerId: varchar("owner_id", { length: 256 }).notNull(),
 });
