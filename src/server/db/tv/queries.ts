@@ -9,7 +9,7 @@ interface TvInsertProps {
   ownerId: string;
 }
 
-export async function TvInsert({ create, ownerId }: TvInsertProps) {
+export async function tvInsert({ create, ownerId }: TvInsertProps) {
   return (
     await db
       .insert(tv)
