@@ -6,7 +6,7 @@ interface StatisticsPanelProps {
   selectedLamp: LampsResponse | null;
 }
 
-export default function StatisticsPanel({
+export default function LampStatisticsPanel({
   lamps,
   selectedLamp,
 }: StatisticsPanelProps) {

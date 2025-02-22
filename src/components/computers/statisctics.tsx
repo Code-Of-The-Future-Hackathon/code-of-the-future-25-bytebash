@@ -5,7 +5,7 @@ interface StatisticsPanelProps {
     selectedComputer: ComputerResponse | null;
 }
 
-export default function StatisticsPanel({
+export default function ComputerStatisticsPanel({
     computers,
     selectedComputer,
 }: StatisticsPanelProps) {
