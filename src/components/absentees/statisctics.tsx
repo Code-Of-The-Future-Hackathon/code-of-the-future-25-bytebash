@@ -28,8 +28,10 @@ export default function AbsenteeStatisticsPanel({
       <p>Owner ID:{selectedAbsentee.ownerId}</p>
       <p>Classname: {selectedAbsentee.className}</p>
       <p className="text-lg font-semibold">
-        {selectedAbsentee.classStart} - {selectedAbsentee.classEnd}
+      {new Date(selectedAbsentee.classStart * 1000).toLocaleTimeString()} - {new Date(selectedAbsentee.classEnd * 1000).toLocaleTimeString()}
       </p>
     </div>
   );
 }
+
+
