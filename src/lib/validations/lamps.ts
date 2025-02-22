@@ -4,6 +4,8 @@ export const lampsCreateSchema = z.object({
   groupName: z.string().min(1).max(256),
 });
 
+export type LampsCreate = z.infer<typeof lampsCreateSchema>;
+
 export const lampsResponseSchema = z.object({
   id: z.string(),
   groupName: z.string().min(1).max(256),
@@ -15,4 +17,4 @@ export const lampsResponseSchema = z.object({
   updatedAt: z.number(),
 });
 
-export type LampsCreate = z.infer<typeof lampsCreateSchema>;
+export type LampsResponse = z.infer<typeof lampsResponseSchema>;
