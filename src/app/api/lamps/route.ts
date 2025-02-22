@@ -23,7 +23,7 @@ export async function GET() {
   }
 }
 
-// create lamp group
+// create lamp
 export async function POST(request: NextRequest) {
   try {
     const { ownerId } = await authenticate();

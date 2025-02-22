@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const lampsCreateSchema = z.object({
+  name: z.string(),
   groupName: z.string().min(1).max(256),
 });
 
@@ -8,6 +9,7 @@ export type LampsCreate = z.infer<typeof lampsCreateSchema>;
 
 export const lampsResponseSchema = z.object({
   id: z.string(),
+  name: z.string(),
   groupName: z.string().min(1).max(256),
   usage: z.string().min(1).max(256),
   status: z.boolean(),

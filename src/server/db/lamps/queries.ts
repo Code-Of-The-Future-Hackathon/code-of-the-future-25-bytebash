@@ -14,6 +14,7 @@ export async function lampsInsert({ create, ownerId }: LampsInsertProps) {
     await db
       .insert(lamps)
       .values({
+        name: create.name,
         groupName: create.groupName,
         ownerId,
       })
