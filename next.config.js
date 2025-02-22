@@ -7,7 +7,9 @@ const config = {
             "res.cloudinary.com",
             "images.unsplash.com",
             "images.pexels.com",
-            "randomuser.me", // Allow images from RandomUser
+            "randomuser.me",
+            "i.imgur.com"
+            // Allow images from RandomUser
         ],
     },
 };
