@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import {
-  ComputerCreate,
+  type ComputerCreate,
   computerCreateSchema,
   computerResponseSchema,
 } from "~/lib/validations/computer";
