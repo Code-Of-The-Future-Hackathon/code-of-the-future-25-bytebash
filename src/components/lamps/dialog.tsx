@@ -1,13 +1,13 @@
 import { Plus } from "lucide-react";
 import * as React from "react";
-import { Button } from "../ui/button";
+import LampCreateForm from "~/components/lamps/form";
+import { Button } from "~/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LampCreateForm from "./form";
+} from "~/components/ui/dialog";
 
 export default function LampCreateDialog() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -16,15 +16,11 @@ export default function LampCreateDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="outline"
-          className="group h-full w-full rounded-lg border-2 border-dashed transition-colors hover:border-primary hover:bg-primary/5"
+          variant="secondary"
+          className="h-full w-full flex-col items-center justify-center border-2 border-dashed bg-muted-foreground/15"
         >
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
-            <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
-              Add a lamp
-            </span>
-          </div>
+          <Plus className="size-8" />
+          Add a lamp
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
