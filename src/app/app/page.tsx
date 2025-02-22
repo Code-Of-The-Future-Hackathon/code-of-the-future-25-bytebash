@@ -50,8 +50,9 @@ export default function Page() {
           </BreadcrumbList>
         </Breadcrumb>
       </header>
-      <div className="flex flex-1 gap-4 p-4">
-        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+      <div className="w-full flex flex-col flex-1 gap-4 p-4">
+        <h2 className="text-3xl text-center py-10 font-semibold tracking-tight">Your Computers</h2>
+        <div className="w-full grid auto-rows-min gap-4 md:grid-cols-3">
           <ComputerCreateDialog />
           {computers.map((computer) => (
             <ComputerCard
@@ -62,6 +63,7 @@ export default function Page() {
           ))}
         </div>
         <div className="flex-1">
+          <h2 className="text-3xl text-center font-semibold tracking-tight py-10">Statistics</h2>
           <StatisticsPanel
             computers={computers}
             selectedComputer={selectedComputer}
