@@ -21,11 +21,11 @@ export async function computerInsert({ create, ownerId }: ComputerInsertProps) {
   )[0];
 }
 
-interface ComputerGetAllProps {
+interface ComputersGetAllProps {
   ownerId: string;
 }
 
-export async function computersGetAll({ ownerId }: ComputerGetAllProps) {
+export async function computersGetAll({ ownerId }: ComputersGetAllProps) {
   return db.select().from(computers).where(
     eq(computers.ownerId, ownerId), // Ensure ownership
   );
