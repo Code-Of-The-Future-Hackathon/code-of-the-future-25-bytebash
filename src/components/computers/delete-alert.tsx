@@ -25,7 +25,7 @@ export default function ComputerDeleteAlert({ id }: ComputerDeleteAlertProps) {
 
     doDelete()
       .then(() => {
-        toast.success("Computer Added!", {
+        toast.success("Computer Deleted!", {
           id: toastId,
         });
       })
