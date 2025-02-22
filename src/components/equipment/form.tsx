@@ -103,7 +103,7 @@ export default function EquipmentCreateForm({
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select device type" />
+                    <SelectValue placeholder="Select equipment type" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
