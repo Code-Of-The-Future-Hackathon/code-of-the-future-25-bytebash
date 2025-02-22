@@ -11,7 +11,7 @@ export default function AppLayout({
         <>
             <SignedIn>
                 <SidebarProvider>
-                    <div className="flex h-screen">
+                    <div className="w-full flex h-screen">
                         <AppSidebar />
                         <div className="flex flex-col flex-1">
                             <main className="flex-1 p-4">{children}</main>
