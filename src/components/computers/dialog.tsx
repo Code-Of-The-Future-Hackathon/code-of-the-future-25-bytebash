@@ -20,7 +20,7 @@ export default function ComputerCreateDialog() {
         <Button
           asChild
           variant="outline"
-          className="h-full w-full rounded-lg p-1"
+          className="h-full w-full rounded-lg border-dotted p-1"
         >
           <Plus />
         </Button>
