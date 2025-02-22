@@ -11,7 +11,6 @@ export default function LampStatisticsPanel({
   selectedLamp,
 }: StatisticsPanelProps) {
   if (!selectedLamp) {
-    // Show total statistics
     const totalUsage = lamps.reduce(
       (sum, computer) => sum + parseInt(computer.usage),
       0,
@@ -34,7 +33,7 @@ export default function LampStatisticsPanel({
         {selectedLamp.name} Statistics
       </h2>
       <p>ID: {selectedLamp.id}</p>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <p>Group Name:</p>
         <Badge>{selectedLamp.groupName}</Badge>
       </div>
