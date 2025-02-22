@@ -10,10 +10,15 @@ interface TvInsertProps {
 }
 
 export async function TvInsert({ create, ownerId }: TvInsertProps) {
-  await db.insert(tv).values({
-    name: create.name,
-    ownerId,
-  });
+  return (
+    await db
+      .insert(tv)
+      .values({
+        name: create.name,
+        ownerId,
+      })
+      .returning()
+  )[0];
 }
 
 interface TvGetAllProps {

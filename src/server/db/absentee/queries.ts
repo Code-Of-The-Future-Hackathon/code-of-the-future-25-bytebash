@@ -10,10 +10,15 @@ interface AbsenteeInsertProps {
 }
 
 export async function absenteeInsert({ create, ownerId }: AbsenteeInsertProps) {
-  await db.insert(absentee).values({
-    absent: create.absent,
-    ownerId,
-  });
+  return (
+    await db
+      .insert(absentee)
+      .values({
+        absent: create.absent,
+        ownerId,
+      })
+      .returning()
+  )[0];
 }
 
 interface AbsenteeGetAllProps {
