@@ -1,5 +1,3 @@
-"use client";
-
 import { Plus } from "lucide-react";
 import * as React from "react";
 import { Button } from "../ui/button";
@@ -9,9 +7,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import ComputerCreateForm from "./form";
+import LampCreateForm from "./form";
 
-export default function ComputerCreateDialog() {
+export default function LampCreateDialog() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -20,14 +18,14 @@ export default function ComputerCreateDialog() {
         <Button
           asChild
           variant="outline"
-          className="h-full w-full rounded-lg border-dotted p-1"
+          className="h-full w-full rounded-lg p-1"
         >
           <Plus />
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogTitle>Add a computer</DialogTitle>
-        <ComputerCreateForm setIsOpen={setIsOpen} />
+        <DialogTitle>Add a lamp</DialogTitle>
+        <LampCreateForm setIsOpen={setIsOpen} />
       </DialogContent>
     </Dialog>
   );

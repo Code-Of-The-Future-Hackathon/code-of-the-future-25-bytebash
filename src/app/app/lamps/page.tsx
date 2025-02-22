@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ComputerCard from "~/components/computers/card";
-import ComputerCreateDialog from "~/components/computers/dialog";
-import StatisticsPanel from "~/components/computers/statisctics";
+import LampCard from "~/components/lamps/card";
+import LampCreateDialog from "~/components/lamps/dialog";
+import StatisticsPanel from "~/components/lamps/statisctics";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,18 +14,16 @@ import {
 } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
-import { useGetAllComputersQuery } from "~/hooks/api/computers/use-get-all-computers-query";
-import { type ComputerResponse } from "~/lib/validations/computer";
+import { useGetAllLampsQuery } from "~/hooks/api/lamps/use-get-all-lamps-query";
+import { LampsResponse } from "~/lib/validations/lamps";
 
-export default function Page() {
-  const { data: computers, isLoading } = useGetAllComputersQuery({});
-  const [selectedComputer, setSelectedComputer] =
-    useState<ComputerResponse | null>(null);
+export default function LampsPage() {
+  const { data: lamps, isLoading } = useGetAllLampsQuery({});
+  const [selectedLamp, setSelectedLamp] = useState<LampsResponse | null>(null);
 
-  if (isLoading || !computers) {
+  if (isLoading || !lamps) {
     return <div>Loading...</div>;
   }
-
   return (
     <SidebarInset>
       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
@@ -34,17 +32,12 @@ export default function Page() {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink
-                href="#"
-                onClick={() => setSelectedComputer(null)}
-              >
-                Computer Dashboard
-              </BreadcrumbLink>
+              <BreadcrumbLink href="#">Lamps Dashboard</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>
               <BreadcrumbPage>
-                {selectedComputer ? selectedComputer.name : "Overview"}
+                {selectedLamp ? selectedLamp.groupName : "Overview"}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -52,20 +45,17 @@ export default function Page() {
       </header>
       <div className="flex flex-1 gap-4 p-4">
         <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <ComputerCreateDialog />
-          {computers.map((computer) => (
-            <ComputerCard
-              key={computer.id}
-              computer={computer}
-              onClick={() => setSelectedComputer(computer)}
+          <LampCreateDialog />
+          {lamps.map((lamp) => (
+            <LampCard
+              key={lamp.id}
+              lamp={lamp}
+              onClick={() => setSelectedLamp(lamp)}
             />
           ))}
         </div>
         <div className="flex-1">
-          <StatisticsPanel
-            computers={computers}
-            selectedComputer={selectedComputer}
-          />
+          <StatisticsPanel lamps={lamps} selectedLamp={selectedLamp} />
         </div>
       </div>
     </SidebarInset>
