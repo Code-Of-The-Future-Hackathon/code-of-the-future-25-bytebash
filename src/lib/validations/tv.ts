@@ -11,6 +11,7 @@ export const tvResponseSchema = z.object({
   name: z.string().min(1).max(256),
   usage: z.string(),
   type: z.string().min(1).max(256),
+  status: z.boolean(),
   ownerId: z.string().min(1).max(256),
   createdAt: z.number(),
   updatedAt: z.number(),
