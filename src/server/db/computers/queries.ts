@@ -10,10 +10,15 @@ interface ComputerInsertProps {
 }
 
 export async function computerInsert({ create, ownerId }: ComputerInsertProps) {
-  await db.insert(computers).values({
-    name: create.name,
-    ownerId,
-  });
+  return (
+    await db
+      .insert(computers)
+      .values({
+        name: create.name,
+        ownerId,
+      })
+      .returning()
+  )[0];
 }
 
 interface ComputerGetAllProps {
