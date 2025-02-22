@@ -9,7 +9,7 @@ interface LampsInsertProps {
   ownerId: string;
 }
 
-export async function lampsInsert({ create, ownerId }: LampsInsertProps) {
+export async function lampInsert({ create, ownerId }: LampsInsertProps) {
   return (
     await db
       .insert(lamps)
@@ -37,7 +37,7 @@ interface LampsGetByIdProps {
   ownerId: string;
 }
 
-export async function lampsGetById({ id, ownerId }: LampsGetByIdProps) {
+export async function lampGetById({ id, ownerId }: LampsGetByIdProps) {
   return (
     await db
       .select()
@@ -56,7 +56,7 @@ interface LampDeleteProps {
   ownerId: string;
 }
 
-export async function lampsDelete({ id, ownerId }: LampDeleteProps) {
+export async function lampDelete({ id, ownerId }: LampDeleteProps) {
   return (
     await db
       .delete(lamps)

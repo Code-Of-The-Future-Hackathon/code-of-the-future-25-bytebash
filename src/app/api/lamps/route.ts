@@ -6,7 +6,7 @@ import {
   lampsCreateSchema,
   lampsResponseSchema,
 } from "~/lib/validations/lamps";
-import { lampsGetAll, lampsInsert } from "~/server/db/lamps/queries";
+import { lampsGetAll, lampInsert } from "~/server/db/lamps/queries";
 
 // get all lamps
 export async function GET() {
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     const json = (await request.json()) as LampsCreate;
     const create = lampsCreateSchema.parse(json);
 
-    const lamp = await lampsInsert({
+    const lamp = await lampInsert({
       create,
       ownerId,
     });
