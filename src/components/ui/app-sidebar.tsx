@@ -1,18 +1,25 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import { Check, ChevronsUpDown, GalleryVerticalEnd, Search } from 'lucide-react'
+import { OrganizationSwitcher } from "@clerk/nextjs";
+import * as React from "react";
+import {
+  Check,
+  ChevronsUpDown,
+  GalleryVerticalEnd,
+  Search,
+} from "lucide-react";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu'
-import { Label } from '~/components/ui/label'
+} from "~/components/ui/dropdown-menu";
+import { Label } from "~/components/ui/label";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -22,67 +29,69 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from '~/components/ui/sidebar'
+} from "~/components/ui/sidebar";
 
 const data = {
-  versions: ['1.0.1', '1.1.0-alpha', '2.0.0-beta1'],
+  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
     {
-      title: 'Getting Started',
-      url: '#',
+      title: "Getting Started",
+      url: "#",
       items: [
         {
-          title: 'Installation',
-          url: '#',
+          title: "Installation",
+          url: "#",
         },
         {
-          title: 'Project Structure',
-          url: '#',
+          title: "Project Structure",
+          url: "#",
         },
       ],
     },
     {
-      title: 'Building Your Application',
-      url: '#',
+      title: "Building Your Application",
+      url: "#",
       items: [
         {
-          title: 'Routing',
-          url: '#',
+          title: "Routing",
+          url: "#",
         },
         {
-          title: 'Data Fetching',
-          url: '#',
+          title: "Data Fetching",
+          url: "#",
           isActive: true,
         },
         {
-          title: 'Rendering',
-          url: '#',
+          title: "Rendering",
+          url: "#",
         },
         {
-          title: 'Caching',
-          url: '#',
+          title: "Caching",
+          url: "#",
         },
       ],
     },
     {
-      title: 'API Reference',
-      url: '#',
+      title: "API Reference",
+      url: "#",
       items: [
         {
-          title: 'Components',
-          url: '#',
+          title: "Components",
+          url: "#",
         },
         {
-          title: 'File Conventions',
-          url: '#',
+          title: "File Conventions",
+          url: "#",
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar() {
-  const [selectedVersion, setSelectedVersion] = React.useState(data.versions[0])
+  const [selectedVersion, setSelectedVersion] = React.useState(
+    data.versions[0],
+  );
 
   return (
     <Sidebar>
@@ -109,12 +118,12 @@ export function AppSidebar() {
                 className="w-[--radix-dropdown-menu-trigger-width]"
                 align="start"
               >
-                {data.versions.map(version => (
+                {data.versions.map((version) => (
                   <DropdownMenuItem
                     key={version}
                     onSelect={() => setSelectedVersion(version)}
                   >
-                    v{version}{' '}
+                    v{version}{" "}
                     {version === selectedVersion && (
                       <Check className="ml-auto" />
                     )}
@@ -141,12 +150,12 @@ export function AppSidebar() {
         </form>
       </SidebarHeader>
       <SidebarContent>
-        {data.navMain.map(item => (
+        {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {item.items.map(item => (
+                {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
                       <a href={item.url}>{item.title}</a>
@@ -158,7 +167,10 @@ export function AppSidebar() {
           </SidebarGroup>
         ))}
       </SidebarContent>
+      <SidebarFooter>
+        <OrganizationSwitcher />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
