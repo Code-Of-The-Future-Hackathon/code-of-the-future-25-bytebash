@@ -11,11 +11,11 @@ export function useCreateAbsenteeMutation() {
     AxiosError,
     AbsenteeCreate
   >({
-    mutationKey: ["Absentee", "Create"],
-    mutationFn: (create) => axiosInstance.post("/absentee", create),
+    mutationKey: ["Absentees", "Create"],
+    mutationFn: (create) => axiosInstance.post("/absentees", create),
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ["Absentee", "GetAll"],
+        queryKey: ["Absentees", "GetAll"],
       }),
   });
 }
