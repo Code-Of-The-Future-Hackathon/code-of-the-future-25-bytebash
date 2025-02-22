@@ -8,8 +8,8 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ComputerCreateForm from "./form";
+} from "~/components/ui/dialog";
+import ComputerCreateForm from "~/components/computers/form";
 
 export default function ComputerCreateDialog() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -18,15 +18,11 @@ export default function ComputerCreateDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="outline"
-          className="group h-full w-full rounded-lg border-2 border-dashed transition-colors hover:border-primary hover:bg-primary/5"
+          variant="secondary"
+          className="h-full w-full flex-col items-center justify-center border-2 border-dashed bg-muted-foreground/15"
         >
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
-            <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
-              Add a computer
-            </span>
-          </div>
+          <Plus className="size-8" />
+          Add a computer
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
