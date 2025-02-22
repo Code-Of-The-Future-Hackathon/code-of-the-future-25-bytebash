@@ -19,6 +19,7 @@ import {
   EquipmentCreate,
   equipmentCreateSchema,
 } from "~/lib/validations/equipment";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 interface NetworkCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
@@ -35,6 +36,7 @@ export default function NetworkCreateForm({
     resolver: zodResolver(networkCreateSchema),
     defaultValues: {
       name: "",
+      type: "Gateway",
     },
     disabled: isLoading,
   });
@@ -80,6 +82,30 @@ export default function NetworkCreateForm({
                   />
                 </div>
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="type"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Network Type</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select network type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {["Gateway", "Access Point", "Switch"].map((type) => (
+                    <SelectItem key={type} value={type}>
+                      <p>{type}</p>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

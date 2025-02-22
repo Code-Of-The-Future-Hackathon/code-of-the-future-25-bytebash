@@ -79,12 +79,12 @@ export default function EquipmentCreateForm({
   }
 
   const equipmentTypes = [
-    { value: "tv", label: "TV", icon: Tv },
-    { value: "airconditioner", label: "Air Conditioner", icon: AirVent },
-    { value: "projector", label: "Projector", icon: Projector },
-    { value: "sound", label: "Sound", icon: Speaker },
-    { value: "ventilation", label: "Ventilation", icon: Fan },
-    { value: "smartBoard", label: "Smart Board", icon: Presentation },
+    { value: "TV", icon: Tv },
+    { value: "Air Conditioner", icon: AirVent },
+    { value: "Projector", icon: Projector },
+    { value: "Sound", icon: Speaker },
+    { value: "Ventilation", icon: Fan },
+    { value: "Smart Board", icon: Presentation },
   ];
 
   const selectedType = form.watch("type");
@@ -94,6 +94,26 @@ export default function EquipmentCreateForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Equipment Name</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <SelectedIcon className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+                  <Input
+                    placeholder={`Enter ${selectedType} name`}
+                    {...field}
+                    className="pl-10"
+                  />
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="type"
@@ -111,32 +131,12 @@ export default function EquipmentCreateForm({
                     <SelectItem key={type.value} value={type.value}>
                       <div className="flex items-center">
                         <type.icon className="mr-2 h-4 w-4" />
-                        {type.label}
+                        {type.value}
                       </div>
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Equipment Name</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <SelectedIcon className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
-                  <Input
-                    placeholder={`Enter ${selectedType} name`}
-                    {...field}
-                    className="pl-10"
-                  />
-                </div>
-              </FormControl>
               <FormMessage />
             </FormItem>
           )}
