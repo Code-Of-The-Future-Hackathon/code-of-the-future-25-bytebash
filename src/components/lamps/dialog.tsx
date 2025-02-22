@@ -17,7 +17,7 @@ export default function LampCreateDialog() {
             <DialogTrigger asChild>
                 <Button
                     variant="outline"
-                    className="w-full h-32 rounded-lg border-dashed border-2 hover:border-primary hover:bg-primary/5 transition-colors group"
+                    className="w-full h-[23vh] rounded-lg border-dashed border-2 hover:border-primary hover:bg-primary/5 transition-colors group"
                 >
                     <div className="flex flex-col items-center justify-center space-y-2">
                         <Plus className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />

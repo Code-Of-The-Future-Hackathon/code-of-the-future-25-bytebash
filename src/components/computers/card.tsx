@@ -23,7 +23,7 @@ export default function ComputerCard({
           </Badge>
         </div>
         <CardHeader className="pb-2">
-          <CardTitle className="flex items-center space-x-2">
+          <CardTitle className="flex it ems-center space-x-2">
             <Power
               className={`h-5 w-5 ${computer.status ? "text-green-500" : "text-gray-400"}`}
             />
