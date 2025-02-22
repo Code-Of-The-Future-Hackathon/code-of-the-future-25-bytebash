@@ -2,8 +2,8 @@ import { type NextRequest, NextResponse } from "next/server";
 import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import { NotFoundError } from "~/lib/exceptions";
-import { absenteeDelete } from "~/server/db/absentees/queries";
-import { absenteeResponseSchema } from "~/lib/validations/absentee";
+import { networkDelete } from "~/server/db/networks/queries";
+import { networkResponseSchema } from "~/lib/validations/networks";
 
 interface IdProps {
   params: Promise<{ id: string }>;
@@ -15,13 +15,13 @@ export async function DELETE(_request: NextRequest, props: IdProps) {
     const { id } = await props.params;
     const { ownerId } = await authenticate();
 
-    const absentee = await absenteeDelete({
+    const network = await networkDelete({
       id,
       ownerId,
     });
-    if (!absentee) throw new NotFoundError();
+    if (!network) throw new NotFoundError();
 
-    return NextResponse.json(absenteeResponseSchema.parse(absentee));
+    return NextResponse.json(networkResponseSchema.parse(network));
   } catch (error) {
     return handleError(error);
   }

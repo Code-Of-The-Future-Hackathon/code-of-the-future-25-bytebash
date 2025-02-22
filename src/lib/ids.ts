@@ -3,6 +3,7 @@ enum IdPrefix {
   LAMPS = "lamp_",
   TV = "tv_",
   ABSENTEE = "abs_",
+  NETWORK = "net_",
 }
 
 export default IdPrefix;

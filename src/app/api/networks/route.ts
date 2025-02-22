@@ -2,22 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import {
-  AbsenteeCreate,
-  absenteeCreateSchema,
-  absenteeResponseSchema,
-} from "~/lib/validations/absentee";
-import { absenteesGetAll, absenteeInsert } from "~/server/db/absentees/queries";
+  NetworkCreate,
+  networkCreateSchema,
+  networkResponseSchema,
+} from "~/lib/validations/networks";
+import { networkInsert, networksGetAll } from "~/server/db/networks/queries";
 
 // get all absentees
 export async function GET() {
   try {
     const { ownerId } = await authenticate();
 
-    const absentees = await absenteesGetAll({
+    const networks = await networksGetAll({
       ownerId,
     });
 
-    return NextResponse.json(absenteeResponseSchema.array().parse(absentees));
+    return NextResponse.json(networkResponseSchema.array().parse(networks));
   } catch (error) {
     return handleError(error);
   }
@@ -28,15 +28,15 @@ export async function POST(request: NextRequest) {
   try {
     const { ownerId } = await authenticate();
 
-    const json = (await request.json()) as AbsenteeCreate;
-    const create = absenteeCreateSchema.parse(json);
+    const json = (await request.json()) as NetworkCreate;
+    const create = networkCreateSchema.parse(json);
 
-    const absentee = await absenteeInsert({
+    const network = await networkInsert({
       create,
       ownerId,
     });
 
-    return NextResponse.json(absenteeResponseSchema.parse(absentee), {
+    return NextResponse.json(networkResponseSchema.parse(network), {
       status: 201,
     });
   } catch (error) {
