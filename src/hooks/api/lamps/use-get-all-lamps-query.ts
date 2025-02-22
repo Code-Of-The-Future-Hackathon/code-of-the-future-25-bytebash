@@ -8,7 +8,7 @@ export function useGetAllLampsQuery({
 }: Partial<UseQueryOptions<LampsResponse[], AxiosError>>) {
   return useQuery<LampsResponse[], AxiosError>({
     ...options,
-    queryKey: ["LampsResponse", "GetAll"],
+    queryKey: ["Lamps", "GetAll"],
     queryFn: async () =>
       (await axiosInstance.get("/lamps")).data as LampsResponse[],
   });

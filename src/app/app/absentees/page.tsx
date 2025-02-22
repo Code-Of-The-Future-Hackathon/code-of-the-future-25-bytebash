@@ -4,19 +4,19 @@ import { useState } from "react";
 import AbsenteeCard from "~/components/absentees/card";
 import AbsenteeStatisticsPanel from "~/components/absentees/statisctics";
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
 import { useGetAllAbsenteesQuery } from "~/hooks/api/absentee/use-get-all-absentees-query";
 import { AbsenteeResponse } from "~/lib/validations/absentee";
 
-export default function LampsPage() {
+export default function AbsenteesPage() {
   const { data: absentees, isLoading } = useGetAllAbsenteesQuery({});
   const [selectedAbsentee, setSelectedAbsentee] =
     useState<AbsenteeResponse | null>(null);

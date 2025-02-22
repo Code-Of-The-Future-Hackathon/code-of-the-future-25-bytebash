@@ -8,8 +8,8 @@ export function useGetAllAbsenteesQuery({
 }: Partial<UseQueryOptions<AbsenteeResponse[], AxiosError>>) {
   return useQuery<AbsenteeResponse[], AxiosError>({
     ...options,
-    queryKey: ["Absentee", "GetAll"],
+    queryKey: ["Absentees", "GetAll"],
     queryFn: async () =>
-      (await axiosInstance.get("/absentee")).data as AbsenteeResponse[],
+      (await axiosInstance.get("/absentees")).data as AbsenteeResponse[],
   });
 }

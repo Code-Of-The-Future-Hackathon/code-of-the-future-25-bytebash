@@ -15,24 +15,26 @@ export default function ComputerCreateDialog() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
-              <Button
-                  variant="outline"
-                  className="w-full h-[23vh] rounded-lg border-dashed border-2 hover:border-primary hover:bg-primary/5 transition-colors group"
-              >
-                  <div className="flex flex-col items-center justify-center space-y-2">
-                      <Plus className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
-                      <span className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button
+          variant="outline"
+          className="group h-32 w-full rounded-lg border-2 border-dashed transition-colors hover:border-primary hover:bg-primary/5"
+        >
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
+            <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
               Add a computer
             </span>
-                  </div>
-              </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-              <DialogTitle className="text-2xl font-semibold text-center mb-6">Add a New Computer</DialogTitle>
-              <ComputerCreateForm setIsOpen={setIsOpen} />
-          </DialogContent>
-      </Dialog>
+          </div>
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogTitle className="mb-6 text-center text-2xl font-semibold">
+          Add a New Computer
+        </DialogTitle>
+        <ComputerCreateForm setIsOpen={setIsOpen} />
+      </DialogContent>
+    </Dialog>
   );
 }

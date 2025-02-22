@@ -11,7 +11,7 @@ export const absenteeResponseSchema = z.object({
   className: z.string(),
   name: z.string().min(1).max(256),
   classStart: z.number(),
-  classEnd: z.string(),
+  classEnd: z.number(),
   ownerId: z.string(),
 });
 

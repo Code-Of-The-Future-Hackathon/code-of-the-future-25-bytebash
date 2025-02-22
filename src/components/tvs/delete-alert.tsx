@@ -1,4 +1,6 @@
 import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
+import { useDeleteTvMutation } from "~/hooks/api/tv/use-delete-tv-mutation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,8 +12,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { toast } from "sonner";
-import { useDeleteTvMutation } from "~/hooks/api/tv/use-delete-tv-mutation";
 
 type TvDeleteAlertProps = {
   id: string;
