@@ -1,4 +1,6 @@
+import { formatDistanceToNow } from "date-fns";
 import { Calendar, Clock, Power } from "lucide-react";
+import ComputerDeleteAlert from "~/components/computers/delete-alert";
 import { Badge } from "~/components/ui/badge";
 import {
   Card,
@@ -9,7 +11,6 @@ import {
 } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
 import type { ComputerResponse } from "~/lib/validations/computer";
-import ComputerDeleteAlert from "./delete-alert";
 
 export default function ComputerCard({
   computer,
@@ -43,11 +44,19 @@ export default function ComputerCard({
       <CardContent className="flex flex-col justify-end gap-2 text-muted-foreground">
         <div className="flex items-center">
           <Clock className="mr-1 size-6 shrink-0" />
-          Usage: {computer.usage} hours
+          CPU Usage:{" "}
+          <span className="ml-1 text-primary">{computer.usage} %</span>
         </div>
         <div className="flex items-center">
           <Calendar className="mr-1 size-6 shrink-0" />
-          Last Active: {new Date(computer.lastTurnOnAt).toLocaleString()}
+          Last Active:{" "}
+          <span className="ml-1 text-primary">
+            {computer.updatedAt
+              ? formatDistanceToNow(computer.updatedAt * 1000, {
+                  addSuffix: true,
+                })
+              : "N/A"}
+          </span>
         </div>
       </CardContent>
       <CardFooter>
