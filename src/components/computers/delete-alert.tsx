@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-import { useDeleteComputerMutation } from "~/hooks/api/computers/use-delete-computer-mutation";
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,7 +10,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
+} from "~/components/ui/alert-dialog";
+import { Button } from "~/components/ui/button";
+import { useDeleteComputerMutation } from "~/hooks/api/computers/use-delete-computer-mutation";
 
 type ComputerDeleteAlertProps = {
   id: string;
@@ -19,25 +21,39 @@ export default function ComputerDeleteAlert({ id }: ComputerDeleteAlertProps) {
   const { mutateAsync: doDelete } = useDeleteComputerMutation({ id });
 
   async function onSubmit() {
-    await doDelete();
+    const toastId = toast.loading("Deleting Computer...");
+
+    doDelete()
+      .then(() => {
+        toast.success("Computer Added!", {
+          id: toastId,
+        });
+      })
+      .catch(() => {
+        toast.error("Failed to add computer!", {
+          id: toastId,
+        });
+      });
   }
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="rounded bg-red-500 px-3 py-2 text-secondary">
-        <Trash2 />
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive" className="size-8">
+          <Trash2 className="size-full" />
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            computer.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-500" onClick={onSubmit}>
+          <AlertDialogAction className="bg-destructive" onClick={onSubmit}>
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>
