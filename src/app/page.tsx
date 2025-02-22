@@ -155,8 +155,8 @@ const LandingPage = () => {
               </p>
               {/*TODO*/}
               <a
-                  href="#"
-                  className="items-center justify-center text-base font-semibold text-black dark:dark:text-black text-white lg:justify-start flex flex-row gap-2"
+                  href="/app"
+                  className="items-center justify-center text-base font-semibold text-black dark:text-white lg:justify-start flex flex-row gap-2"
               >
                 Get Started
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
