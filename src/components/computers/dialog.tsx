@@ -1,4 +1,6 @@
-import React from "react";
+import { Plus } from "lucide-react";
+import { UseFormReturn } from "react-hook-form";
+import { Button } from "../ui/button";
 import {
     Dialog,
     DialogContent,
@@ -6,9 +8,6 @@ import {
     DialogTrigger,
 } from "../ui/dialog";
 import ComputerCreateForm from "./form";
-import { Plus } from "lucide-react";
-import { UseFormReturn } from "react-hook-form";
-import { Button } from "../ui/button";
 
 type ComputerCreateDialogProps = {
     form: UseFormReturn<{ name: string }, any, undefined>;

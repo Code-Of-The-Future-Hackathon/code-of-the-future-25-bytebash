@@ -1,4 +1,5 @@
-import React from "react";
+import { UseFormReturn } from "react-hook-form";
+import { Button } from "../ui/button";
 import {
     Form,
     FormControl,
@@ -8,15 +9,16 @@ import {
     FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { UseFormReturn } from "react-hook-form";
 
 type ComputerCreateFormProps = {
     form: UseFormReturn<{ name: string }, any, undefined>;
     onSubmit: (values: { name: string }) => void;
 };
 
-export default function ComputerCreateForm({form, onSubmit}:ComputerCreateFormProps) {
+export default function ComputerCreateForm({
+    form,
+    onSubmit,
+}: ComputerCreateFormProps) {
     return (
         <Form {...form}>
             <form
