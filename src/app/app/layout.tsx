@@ -1,7 +1,7 @@
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import * as React from "react";
+import Footer from "~/components/footer";
 import { AppSidebar } from "~/components/sidebar/app-sidebar";
-import Footer from "~/components/ui/Footer";
 import { SidebarProvider } from "~/components/ui/sidebar";
 
 export default function AppLayout({
@@ -11,12 +11,10 @@ export default function AppLayout({
     <>
       <SignedIn>
         <SidebarProvider>
-          <div className="flex h-screen w-full">
-            <AppSidebar />
-            <div className="flex flex-1 flex-col">
-              <main className="flex-1 p-4">{children}</main>
-              <Footer />
-            </div>
+          <AppSidebar />
+          <div className="flex flex-col">
+            <main className="flex-1">{children}</main>
+            <Footer />
           </div>
         </SidebarProvider>
       </SignedIn>
