@@ -14,7 +14,7 @@ import {
 } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
-import { useGetAllComputersQuery } from "~/hooks/api/use-get-all-computers-query";
+import { useGetAllComputersQuery } from "~/hooks/api/computers/use-get-all-computers-query";
 import { type ComputerResponse } from "~/lib/validations/computer";
 
 export default function Page() {
