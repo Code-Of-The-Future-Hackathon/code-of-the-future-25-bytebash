@@ -1,5 +1,6 @@
 "use client";
 
+import { ApiProvider } from "~/components/providers/api-provider";
 import { Toaster } from "~/components/ui/sonner";
 import { TailwindIndicator } from "~/components/ui/tailwind-indicator";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -20,9 +21,11 @@ export function ProvidersWithoutTheme({ children }: ProvidersProps) {
         baseTheme: theme === "dark" ? dark : undefined,
       }}
     >
-      {children}
-      <Toaster />
-      <TailwindIndicator />
+      <ApiProvider>
+        {children}
+        <Toaster />
+        <TailwindIndicator />
+      </ApiProvider>
     </ClerkProvider>
   );
 }
