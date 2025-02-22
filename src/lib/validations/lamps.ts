@@ -1,6 +1,10 @@
 import { z } from "zod";
 
 export const lampsCreateSchema = z.object({
+  groupName: z.string().min(1).max(256),
+});
+
+export const lampsResponseSchema = z.object({
   id: z.string(),
   groupName: z.string().min(1).max(256),
   usage: z.string().min(1).max(256),
