@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Monitor } from "lucide-react";
+import { Monitor, Network } from "lucide-react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -74,7 +74,7 @@ export default function NetworkCreateForm({
               <FormLabel>Network Name</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Monitor className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+                  <Network className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
                   <Input
                     placeholder="Enter network name"
                     {...field}

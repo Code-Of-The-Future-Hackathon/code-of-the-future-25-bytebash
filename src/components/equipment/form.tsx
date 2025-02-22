@@ -51,7 +51,7 @@ export default function EquipmentCreateForm({
     resolver: zodResolver(equipmentCreateSchema),
     defaultValues: {
       name: "",
-      type: "tv",
+      type: "TV",
     },
     disabled: isLoading,
   });
