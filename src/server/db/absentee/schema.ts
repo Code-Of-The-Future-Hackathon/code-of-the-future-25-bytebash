@@ -9,7 +9,7 @@ import {
 } from "drizzle-orm/pg-core";
 import IdPrefix, { generateId } from "~/lib/ids";
 
-export const absentee = pgTable("absentee", {
+export const absentee = pgTable("absentees", {
   id: varchar("id", { length: 256 })
     .primaryKey()
     .$default(() => generateId(IdPrefix.ABSENTEE)),
