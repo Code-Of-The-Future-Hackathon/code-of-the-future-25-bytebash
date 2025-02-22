@@ -28,7 +28,6 @@ export async function POST(request: NextRequest) {
   try {
     const { ownerId } = await authenticate();
 
-    console.log("RUPAAAAAAAA", ownerId);
     const json = (await request.json()) as ComputerCreate;
     const create = computerCreateSchema.parse(json);
 
