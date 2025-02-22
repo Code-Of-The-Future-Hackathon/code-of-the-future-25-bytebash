@@ -30,7 +30,7 @@ export default function ComputerDeleteAlert({ id }: ComputerDeleteAlertProps) {
         });
       })
       .catch(() => {
-        toast.error("Failed to add computer!", {
+        toast.error("Failed to delete computer!", {
           id: toastId,
         });
       });
