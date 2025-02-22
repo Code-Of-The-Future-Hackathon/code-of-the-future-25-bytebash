@@ -12,7 +12,7 @@ export default function StatisticsPanel({
     if (!selectedComputer) {
         // Show total statistics
         const totalUsage = computers.reduce(
-            (sum, computer) => sum + computer.usage,
+            (sum, computer) => sum + parseInt(computer.usage),
             0,
         );
         const activeComputers = computers.filter(
@@ -48,7 +48,7 @@ export default function StatisticsPanel({
             </p>
             <p>
                 Updated At:{" "}
-                {new Date(selectedComputer.updatedAt).toLocaleString()}
+                {new Date(selectedComputer.updatedAt!).toLocaleString()}
             </p>
         </div>
     );
