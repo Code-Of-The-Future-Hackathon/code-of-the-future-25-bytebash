@@ -10,6 +10,7 @@ export const computerResponseSchema = z.object({
   id: z.string(),
   name: z.string(),
   usage: z.string(),
+  battery: z.number(),
   status: z.boolean(),
   lastTurnOnAt: z.number(),
   ownerId: z.string(),
@@ -18,3 +19,10 @@ export const computerResponseSchema = z.object({
 });
 
 export type ComputerResponse = z.infer<typeof computerResponseSchema>;
+
+export const computerStatsSchema = z.object({
+  usage: z.string(),
+  battery: z.number(),
+});
+
+export type ComputerStats = z.infer<typeof computerStatsSchema>;
