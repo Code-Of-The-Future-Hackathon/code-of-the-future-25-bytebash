@@ -14,7 +14,7 @@ const plans: Plan[] = [
   {
     name: "Free",
     price: "$0",
-    features: ["3 modules", "7 GB storage", "Basic support"],
+    features: ["3 modules", "Basic support"],
     isPopular: false,
   },
   {
@@ -22,7 +22,6 @@ const plans: Plan[] = [
     price: "$29",
     features: [
       "Up to 10 modules",
-      "80 GB storage",
       "Priority support",
       "Advanced analytics",
     ],
