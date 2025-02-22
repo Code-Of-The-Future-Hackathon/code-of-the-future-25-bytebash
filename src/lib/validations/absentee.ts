@@ -4,6 +4,8 @@ export const absenteeCreateSchema = z.object({
   absent: z.string().min(1).max(256),
 });
 
+export type AbsenteeCreate = z.infer<typeof absenteeCreateSchema>;
+
 export const absenteeResponseSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -14,4 +16,5 @@ export const absenteeResponseSchema = z.object({
   createdAt: z.number(),
   updatedAt: z.number().nullable(),
 });
-export type AbsenteeCreate = z.infer<typeof absenteeCreateSchema>;
+
+export type AbsenteeResponse = z.infer<typeof absenteeResponseSchema>;
