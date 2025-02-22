@@ -6,7 +6,7 @@ import {
   absenteeCreateSchema,
   absenteeResponseSchema,
 } from "~/lib/validations/absentee";
-import { absenteesGetAll, absenteeInsert } from "~/server/db/absentee/queries";
+import { absenteesGetAll, absenteeInsert } from "~/server/db/absentees/queries";
 
 // get all absentees
 export async function GET() {

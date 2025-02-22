@@ -2,7 +2,7 @@ import "server-only";
 import { and, eq } from "drizzle-orm";
 import { db } from "~/server/db";
 import { AbsenteeCreate } from "~/lib/validations/absentee";
-import { absentee } from "~/server/db/absentee/schema";
+import { absentee } from "~/server/db/absentees/schema";
 
 interface AbsenteeInsertProps {
   create: AbsenteeCreate;

@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import { NotFoundError } from "~/lib/exceptions";
-import { absenteeDelete } from "~/server/db/absentee/queries";
+import { absenteeDelete } from "~/server/db/absentees/queries";
 import { absenteeResponseSchema } from "~/lib/validations/absentee";
 
 interface IdProps {
