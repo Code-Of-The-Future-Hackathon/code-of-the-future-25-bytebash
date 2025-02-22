@@ -1,37 +1,34 @@
+"use client";
+
 import { Plus } from "lucide-react";
-import { UseFormReturn } from "react-hook-form";
+import * as React from "react";
 import { Button } from "../ui/button";
 import {
-    Dialog,
-    DialogContent,
-    DialogTitle,
-    DialogTrigger,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
 } from "../ui/dialog";
 import ComputerCreateForm from "./form";
 
-type ComputerCreateDialogProps = {
-    form: UseFormReturn<{ name: string }, any, undefined>;
-    onSubmit: (values: { name: string }) => void;
-};
-export default function ComputerCreateDialog({
-    form,
-    onSubmit,
-}: ComputerCreateDialogProps) {
-    return (
-        <Dialog>
-            <DialogTrigger className="max-w-sm aspect-video h-min w-full">
-                <Button
-                    asChild
-                    variant="outline"
-                    className="p-1  w-full  h-full rounded-lg "
-                >
-                    <Plus />
-                </Button>
-            </DialogTrigger>
-            <DialogContent>
-                <DialogTitle>Add a computer</DialogTitle>
-                <ComputerCreateForm form={form} onSubmit={onSubmit} />
-            </DialogContent>
-        </Dialog>
-    );
+export default function ComputerCreateDialog() {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger className="aspect-video h-min w-full max-w-sm">
+        <Button
+          asChild
+          variant="outline"
+          className="h-full w-full rounded-lg p-1"
+        >
+          <Plus />
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogTitle>Add a computer</DialogTitle>
+        <ComputerCreateForm setIsOpen={setIsOpen} />
+      </DialogContent>
+    </Dialog>
+  );
 }
