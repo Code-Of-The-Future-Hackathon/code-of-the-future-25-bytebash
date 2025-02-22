@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "../ui/button";
+import { Trash2 } from "lucide-react";
+import { useDeleteComputerMutation } from "~/hooks/api/computers/use-delete-computer-mutation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,13 +11,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { Trash2 } from "lucide-react";
-export default function ComputerDeleteAlert() {
-const {} = useCompute
 
-    function deleteComputer(id:string){
-        
-    }
+type ComputerDeleteAlertProps = {
+  id: string;
+};
+export default function ComputerDeleteAlert({ id }: ComputerDeleteAlertProps) {
+  const { mutateAsync: doDelete } = useDeleteComputerMutation({ id });
+
+  async function onSubmit() {
+    await doDelete();
+  }
 
   return (
     <AlertDialog>
@@ -34,10 +37,7 @@ const {} = useCompute
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            className="bg-red-500"
-            onClick={deleteComputer(computer.id)}
-          >
+          <AlertDialogAction className="bg-red-500" onClick={onSubmit}>
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>

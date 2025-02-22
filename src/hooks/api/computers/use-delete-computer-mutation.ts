@@ -15,11 +15,10 @@ export function useDeleteComputerMutation({ id }: DeleteComputerMutationProps) {
 
   return useMutation<
     AxiosResponse<ComputerResponse>,
-    AxiosError,
-    ComputerCreate
+    AxiosError
   >({
     mutationKey: ["Computers", "Delete"],
-    mutationFn: () => axiosInstance.post(`/computers?${id}`),
+    mutationFn: () => axiosInstance.delete(`/computers?${id}`),
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ["Computers", "GetAll"],
