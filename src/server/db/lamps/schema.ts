@@ -13,9 +13,9 @@ export const lamps = pgTable("lamps", {
     .primaryKey()
     .$default(() => generateId(IdPrefix.LAMPS)),
   groupName: varchar("group_name", { length: 256 }),
-  usage: decimal("usage", { precision: 10, scale: 2 }).notNull(),
+  usage: decimal("usage", { precision: 10, scale: 2 }).notNull().default("0"),
   status: boolean("status").notNull().default(false),
-  lastTurnOnAt: integer("last_turn_on_at").notNull(),
+  lastTurnOnAt: integer("last_turn_on_at").notNull().default(0),
   ownerId: varchar("owner_id", { length: 256 }).notNull(),
   createdAt: integer("created_at")
     .default(sql`(EXTRACT(EPOCH FROM NOW()))`)

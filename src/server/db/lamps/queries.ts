@@ -2,7 +2,7 @@ import "server-only";
 import { and, eq } from "drizzle-orm";
 import { db } from "~/server/db";
 import { LampsCreate } from "~/lib/validations/lamps";
-import { tv } from "~/server/db/tv/schema";
+import { lamps } from "~/server/db/lamps/schema";
 
 interface LampsInsertProps {
   create: LampsCreate;
@@ -10,54 +10,54 @@ interface LampsInsertProps {
 }
 
 export async function lampsInsert({ create, ownerId }: LampsInsertProps) {
-  await db.insert(tv).values({
-    name: create.name,
+  await db.insert(lamps).values({
+    groupName: create.groupName,
     ownerId,
   });
 }
 
-interface TvGetAllProps {
+interface LampsGetAllProps {
   ownerId: string;
 }
 
-export async function lampsGetAll({ ownerId }: TvGetAllProps) {
-  return db.select().from(tv).where(
-    eq(tv.ownerId, ownerId), // Ensure ownership
+export async function lampsGetAll({ ownerId }: LampsGetAllProps) {
+  return db.select().from(lamps).where(
+    eq(lamps.ownerId, ownerId), // Ensure ownership
   );
 }
 
-interface TvGetByIdProps {
+interface LampsGetByIdProps {
   id: string;
   ownerId: string;
 }
 
-export async function lampsGetById({ id, ownerId }: TvGetByIdProps) {
+export async function lampsGetById({ id, ownerId }: LampsGetByIdProps) {
   return (
     await db
       .select()
-      .from(tv)
+      .from(lamps)
       .where(
         and(
-          eq(tv.ownerId, ownerId), // Ensure ownership
-          eq(tv.id, id),
+          eq(lamps.ownerId, ownerId), // Ensure ownership
+          eq(lamps.id, id),
         ),
       )
   )[0];
 }
 
-interface TvDeleteProps {
+interface LampDeleteProps {
   id: string;
   ownerId: string;
 }
 
-export async function lampsDelete({ id, ownerId }: TvDeleteProps) {
+export async function lampsDelete({ id, ownerId }: LampDeleteProps) {
   return (
     await db
-      .delete(tv)
+      .delete(lamps)
       .where(
         and(
-          eq(tv.ownerId, ownerId), // Ensure ownership
-          eq(tv.id, id),
+          eq(lamps.ownerId, ownerId), // Ensure ownership
+          eq(lamps.id, id),
         ),
       )
       .returning()
