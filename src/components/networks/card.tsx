@@ -1,7 +1,14 @@
-import { ArrowDownUp, Power } from "lucide-react";
+import { ArrowDownUp, Clock, Power } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { NetworkResponse } from "~/lib/validations/network";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import { cn } from "~/lib/utils";
+import { type NetworkResponse } from "~/lib/validations/network";
 import NetworkDeleteAlert from "./delete-alert";
 
 export default function NetworkCard({
@@ -12,40 +19,40 @@ export default function NetworkCard({
   onClick: () => void;
 }) {
   return (
-    <div className={"w-full"}>
-      <Card
-        className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-md"
-        onClick={onClick}
+    <Card
+      className="group relative w-full max-w-[350px] cursor-pointer overflow-hidden transition-all duration-300"
+      onClick={onClick}
+    >
+      <Badge
+        className="absolute right-2 top-2 p-2"
+        variant={network.status ? "success" : "destructive"}
       >
-        <div className="absolute right-0 top-0 p-2">
-          <Badge variant={network.status ? "success" : "secondary"}>
-            {network.status ? "On" : "Off"}
-          </Badge>
+        {network.status ? "ON" : "OFF"}
+      </Badge>
+      <CardHeader>
+        <CardTitle className="flex items-center">
+          <Power
+            className={cn(
+              "mr-2 size-6 text-muted-foreground",
+              network.status && "text-success",
+            )}
+          />
+          <span>{network.name}</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col justify-end gap-2 text-muted-foreground">
+        <div className="flex items-center">
+          <ArrowDownUp className="mr-1 size-6 shrink-0" />
+          Traffic:{" "}
+          <span className="ml-1 text-primary">{network.traffic} GB</span>
         </div>
-        <CardHeader className="pb-2">
-          <CardTitle className="flex items-center space-x-2">
-            <Power
-              className={`h-5 w-5 ${network.status ? "text-green-500" : "text-gray-400"}`}
-            />
-            <span>{network.name}</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2">
-            <p className="flex items-center text-sm text-muted-foreground">
-              <ArrowDownUp className="mr-2 h-4 w-4" />
-              Traffic: {network.traffic} GB
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Last Active: {new Date(network.updatedAt).toLocaleString()}
-            </p>
-            <div className="flex justify-end">
-              <NetworkDeleteAlert id={network.id} />
-            </div>
-          </div>
-        </CardContent>
-        <div className="h-1 w-full origin-left scale-x-0 transform bg-gradient-to-r from-primary to-primary/50 transition-transform duration-300 group-hover:scale-x-100" />
-      </Card>
-    </div>
+      </CardContent>
+      <CardFooter>
+        <div className="absolute bottom-2 right-2">
+          <NetworkDeleteAlert id={network.id} />
+        </div>
+      </CardFooter>
+      <div className="h-1 w-full origin-left scale-x-0 transform bg-gradient-to-r from-primary to-primary/50 transition-transform duration-300 group-hover:scale-x-100" />
+    </Card>
   );
 }
