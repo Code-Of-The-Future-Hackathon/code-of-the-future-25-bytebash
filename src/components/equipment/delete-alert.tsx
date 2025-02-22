@@ -12,6 +12,7 @@ import {
   AlertDialogTrigger,
 } from "~/components/ui/alert-dialog";
 import { useDeleteEquipmentMutation } from "~/hooks/api/equipment/use-delete-equipment-mutation";
+import { Button } from "../ui/button";
 
 type EquipmentDeleteAlertProps = {
   id: string;
@@ -38,8 +39,10 @@ export default function EquipmentDeleteAlert({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="rounded bg-red-500 px-3 py-2 text-secondary">
-        <Trash2 />
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive" className="size-8">
+          <Trash2 className="size-full" />
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -51,7 +54,7 @@ export default function EquipmentDeleteAlert({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-500" onClick={onSubmit}>
+          <AlertDialogAction className="bg-destructive" onClick={onSubmit}>
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>

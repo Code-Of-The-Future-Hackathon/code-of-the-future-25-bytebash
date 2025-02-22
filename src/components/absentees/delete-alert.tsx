@@ -12,6 +12,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
+import { Button } from "../ui/button";
 
 type AbsenteerDeleteAlertProps = {
   id: string;
@@ -39,8 +40,10 @@ export default function AbsenteerDeleteAlert({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="rounded bg-red-500 px-3 py-2 text-secondary">
-        <Trash2 />
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive" className="size-8">
+          <Trash2 className="size-full" />
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -52,7 +55,7 @@ export default function AbsenteerDeleteAlert({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-500" onClick={onSubmit}>
+          <AlertDialogAction className="bg-destructive" onClick={onSubmit}>
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>
