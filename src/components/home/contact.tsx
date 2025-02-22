@@ -53,7 +53,7 @@ export function ContactSection() {
           >
             Message
           </label>
-          <Textarea id="message" placeholder="Your message" rows={5} required />
+          <Textarea className={"max-h-[200px]"} id="message" placeholder="Your message" rows={5} required />
         </div>
 
         <Button type="submit" className="w-full">
