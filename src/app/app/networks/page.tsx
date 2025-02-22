@@ -5,21 +5,22 @@ import NetworkCard from "~/components/networks/card";
 import NetworkCreateDialog from "~/components/networks/dialog";
 import NetworkStatisticsPanel from "~/components/networks/statisctics";
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
 import { useGetAllNetworksQuery } from "~/hooks/api/networks/use-get-all-networks-query";
-import { NetworkResponse } from "~/lib/validations/networks";
+import { type NetworkResponse } from "~/lib/validations/networks";
 
 export default function NetworksPage() {
   const { data: networks, isLoading } = useGetAllNetworksQuery({});
-  const [selectedNetwork, setSelectedNetwork] = useState<NetworkResponse | null>(null);
+  const [selectedNetwork, setSelectedNetwork] =
+    useState<NetworkResponse | null>(null);
 
   if (isLoading || !networks) {
     return <div>Loading...</div>;
@@ -33,10 +34,7 @@ export default function NetworksPage() {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink
-                href="#"
-                onClick={() => setSelectedNetwork(null)}
-              >
+              <BreadcrumbLink href="#" onClick={() => setSelectedNetwork(null)}>
                 Networks Dashboard
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -67,7 +65,10 @@ export default function NetworksPage() {
           <h2 className="py-10 text-center text-3xl font-semibold tracking-tight">
             Statistics
           </h2>
-          <NetworkStatisticsPanel networks={networks} selectedNetwork={selectedNetwork} />
+          <NetworkStatisticsPanel
+            networks={networks}
+            selectedNetwork={selectedNetwork}
+          />
         </div>
       </div>
     </SidebarInset>
