@@ -19,7 +19,7 @@ export default function ComputerCreateDialog() {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="group h-32 w-full rounded-lg border-2 border-dashed transition-colors hover:border-primary hover:bg-primary/5"
+          className="group h-full w-full rounded-lg border-2 border-dashed transition-colors hover:border-primary hover:bg-primary/5"
         >
           <div className="flex flex-col items-center justify-center space-y-2">
             <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
