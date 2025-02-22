@@ -26,7 +26,7 @@ interface ComputersGetAllProps {
 }
 
 export async function computersGetAll({ ownerId }: ComputersGetAllProps) {
-  return db.select().from(computers).where(
+  return db.select().from(computers).orderBy(desc(computers.createdAt)).where(
     eq(computers.ownerId, ownerId), // Ensure ownership
   );
 }
