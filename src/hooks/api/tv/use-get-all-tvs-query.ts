@@ -3,7 +3,7 @@ import { type AxiosError } from "axios";
 import { axiosInstance } from "~/lib/axios";
 import { TvResponse } from "~/lib/validations/tv";
 
-export function useGetAllTvQuery({
+export function useGetAllTvsQuery({
   ...options
 }: Partial<UseQueryOptions<TvResponse[], AxiosError>>) {
   return useQuery<TvResponse[], AxiosError>({
