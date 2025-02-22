@@ -3,7 +3,7 @@ import { type AxiosError } from "axios";
 import { axiosInstance } from "~/lib/axios";
 import { AbsenteeResponse } from "~/lib/validations/absentee";
 
-export function useGetAllAbsenteeQuery({
+export function useGetAllAbsenteesQuery({
   ...options
 }: Partial<UseQueryOptions<AbsenteeResponse[], AxiosError>>) {
   return useQuery<AbsenteeResponse[], AxiosError>({
