@@ -1,6 +1,15 @@
 "use client";
 
-import { Calendar, Clock, Info, Monitor, Power } from "lucide-react";
+import { formatDistanceToNow, intlFormat } from "date-fns";
+import {
+  Battery,
+  Calendar,
+  Clock,
+  Cpu,
+  Info,
+  Monitor,
+  Power,
+} from "lucide-react";
 import * as React from "react";
 import { StatisticsCard } from "~/components/statistics-card";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -17,10 +26,9 @@ export default function ComputerStatisticsPanel({
   computers,
   selectedComputer,
 }: StatisticsPanelProps) {
-  const totalUsage = computers.reduce(
-    (sum, computer) => sum + parseFloat(computer.usage),
-    0,
-  );
+  const totalUsage = computers
+    .filter((computer) => computer.status)
+    .reduce((sum, computer) => sum + parseFloat(computer.usage), 0);
   const activeComputers = computers.filter(
     (computer) => computer.status,
   ).length;
@@ -44,8 +52,8 @@ export default function ComputerStatisticsPanel({
                 icon={<Monitor className="size-4" />}
               />
               <StatisticsCard
-                title="Total Usage"
-                value={`${totalUsage} hours`}
+                title="Average CPU Usage"
+                value={`${(totalUsage / activeComputers).toFixed(2)} %`}
                 icon={<Clock className="size-4" />}
               />
               <StatisticsCard
@@ -76,22 +84,32 @@ export default function ComputerStatisticsPanel({
                   }
                 />
                 <StatisticsCard
-                  title="Usage"
-                  value={`${selectedComputer.usage} hours`}
-                  icon={<Clock className="size-4" />}
+                  title="CPU Usage"
+                  value={`${selectedComputer.usage} %`}
+                  icon={<Cpu className="size-4" />}
+                />
+                <StatisticsCard
+                  title="Battery"
+                  value={`${selectedComputer.battery} %`}
+                  icon={<Battery className="size-4" />}
                 />
                 <StatisticsCard
                   title="Last Turn On"
                   value={
                     selectedComputer.lastTurnOnAt
-                      ? new Date(selectedComputer.lastTurnOnAt).toLocaleString()
+                      ? formatDistanceToNow(
+                          selectedComputer.lastTurnOnAt * 1000,
+                          {
+                            addSuffix: true,
+                          },
+                        )
                       : "N/A"
                   }
-                  icon={<Calendar className="size-4" />}
+                  icon={<Clock className="size-4" />}
                 />
                 <StatisticsCard
                   title="Created At"
-                  value={new Date(selectedComputer.createdAt).toLocaleString()}
+                  value={intlFormat(selectedComputer.createdAt * 1000)}
                   icon={<Calendar className="size-4" />}
                 />
               </div>
