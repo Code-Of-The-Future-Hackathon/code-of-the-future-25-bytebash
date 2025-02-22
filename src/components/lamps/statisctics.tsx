@@ -34,7 +34,10 @@ export default function LampStatisticsPanel({
         {selectedLamp.name} Statistics
       </h2>
       <p>ID: {selectedLamp.id}</p>
-      <Badge>{selectedLamp.groupName}</Badge>
+      <div className="flex gap-2 items-center">
+        <p>Group Name:</p>
+        <Badge>{selectedLamp.groupName}</Badge>
+      </div>
       <p>Usage: {selectedLamp.usage} hours</p>
       <p>Status: {selectedLamp.status ? "On" : "Off"}</p>
       <p>
