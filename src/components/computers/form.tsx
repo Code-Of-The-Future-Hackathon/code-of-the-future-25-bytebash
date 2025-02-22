@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { useCreateComputerMutation } from "~/hooks/api/use-create-computer-mutation";
+import { useCreateComputerMutation } from "~/hooks/api/computers/use-create-computer-mutation";
 import {
   type ComputerCreate,
   computerCreateSchema,
