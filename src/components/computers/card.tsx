@@ -39,7 +39,9 @@ export default function ComputerCard({
             <p className="text-sm text-muted-foreground">
               Last Active: {new Date(computer.lastTurnOnAt).toLocaleString()}
             </p>
-            <ComputerDeleteAlert id={computer.id} />
+            <div className="flex justify-end">
+              <ComputerDeleteAlert id={computer.id} />
+            </div>
           </div>
         </CardContent>
         <div className="h-1 w-full origin-left scale-x-0 transform bg-gradient-to-r from-primary to-primary/50 transition-transform duration-300 group-hover:scale-x-100" />
