@@ -9,7 +9,10 @@ export default function ComputerCard({
     onClick: () => void;
 }) {
     return (
-        <Card className="cursor-pointer hover:bg-gray-100" onClick={onClick}>
+        <Card
+            className="cursor-pointer aspect-video max-w-sm w-full h-full"
+            onClick={onClick}
+        >
             <CardHeader>
                 <CardTitle>{computer.name}</CardTitle>
             </CardHeader>
