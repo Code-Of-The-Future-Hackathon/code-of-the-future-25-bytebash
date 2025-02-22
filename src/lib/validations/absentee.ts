@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const absenteeCreateSchema = z.object({
-  absent: z.string().min(1).max(256),
+  name: z.string().min(1).max(256),
 });
 
 export type AbsenteeCreate = z.infer<typeof absenteeCreateSchema>;
@@ -9,7 +9,7 @@ export type AbsenteeCreate = z.infer<typeof absenteeCreateSchema>;
 export const absenteeResponseSchema = z.object({
   id: z.string(),
   className: z.string(),
-  absent: z.string().min(1).max(256),
+  name: z.string().min(1).max(256),
   classStart: z.number(),
   classEnd: z.string(),
   ownerId: z.string(),

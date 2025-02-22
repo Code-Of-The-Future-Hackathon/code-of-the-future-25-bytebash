@@ -14,7 +14,7 @@ export async function absenteeInsert({ create, ownerId }: AbsenteeInsertProps) {
     await db
       .insert(absentee)
       .values({
-        absent: create.absent,
+        name: create.name,
         ownerId,
       })
       .returning()
