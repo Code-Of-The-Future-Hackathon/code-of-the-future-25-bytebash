@@ -8,10 +8,10 @@ import {
 } from "drizzle-orm/pg-core";
 import IdPrefix, { generateId } from "~/lib/ids";
 
-export const tv = pgTable("tv", {
+export const equipment = pgTable("equipment", {
   id: varchar("id", { length: 256 })
     .primaryKey()
-    .$default(() => generateId(IdPrefix.TV)),
+    .$default(() => generateId(IdPrefix.EQUIPMENT)),
   name: varchar("name", { length: 256 }),
   usage: decimal("usage", { precision: 10, scale: 2 }).notNull().default("0"),
   type: varchar("type", { length: 256 }),

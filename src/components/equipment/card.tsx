@@ -1,6 +1,7 @@
 import { Clock, Power } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { type EquipmentResponse } from "~/lib/validations/equipment";
 import TvDeleteAlert from "./delete-alert";
 
 export default function EquipmentCard({

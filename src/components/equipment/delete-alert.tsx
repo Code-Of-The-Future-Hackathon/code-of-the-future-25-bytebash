@@ -1,6 +1,5 @@
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import { useDeleteTvMutation } from "~/hooks/api/tv/use-delete-tv-mutation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,12 +10,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
+} from "~/components/ui/alert-dialog";
+import { useDeleteEquipmentMutation } from "~/hooks/api/equipment/use-delete-equipment-mutation";
 
 type EquipmentDeleteAlertProps = {
   id: string;
 };
-export default function EquipmentDeleteAlert({ id }: EquipmentDeleteAlertProps) {
+export default function EquipmentDeleteAlert({
+  id,
+}: EquipmentDeleteAlertProps) {
   const { mutateAsync: doDelete } = useDeleteEquipmentMutation({ id });
 
   async function onSubmit() {
@@ -43,8 +45,8 @@ export default function EquipmentDeleteAlert({ id }: EquipmentDeleteAlertProps) 
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your
-          equipment.
+            This action cannot be undone. This will permanently delete your
+            equipment.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

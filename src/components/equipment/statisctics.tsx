@@ -2,20 +2,23 @@ import { Calendar, Clock, Info, Monitor, Power, User } from "lucide-react";
 import type React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import { type EquipmentResponse } from "~/lib/validations/equipment";
 
 interface StatisticsPanelProps {
   equipmentData: EquipmentResponse[];
   selectedEquipment: EquipmentResponse | null;
 }
 export default function EquipmentStatisticsPanel({
-  equipmentData: tvs,
-  selectedEquipment: selectedTv,
+  equipmentData,
+  selectedEquipment,
 }: StatisticsPanelProps) {
   const totalUsage = equipmentData.reduce(
     (sum, equipment) => sum + Number.parseInt(equipment.usage),
     0,
   );
-  const activeComputers = equipmentData.filter((equipment) => equipment.status).length;
+  const activeComputers = equipmentData.filter(
+    (equipment) => equipment.status,
+  ).length;
 
   return (
     <Card className="w-full">
@@ -23,10 +26,10 @@ export default function EquipmentStatisticsPanel({
         <CardTitle>Statistics</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue={selectedTv ? "selected" : "total"}>
+        <Tabs defaultValue={selectedEquipment ? "selected" : "total"}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="total">Total</TabsTrigger>
-            <TabsTrigger value="selected" disabled={!selectedTv}>
+            <TabsTrigger value="selected" disabled={!selectedEquipment}>
               Selected
             </TabsTrigger>
           </TabsList>
@@ -34,7 +37,7 @@ export default function EquipmentStatisticsPanel({
             <div className="space-y-4">
               <StatCard
                 title="Total Computers"
-                value={tvs.length}
+                value={equipmentData.length}
                 icon={<Monitor className="h-4 w-4" />}
               />
               <StatCard
@@ -50,43 +53,47 @@ export default function EquipmentStatisticsPanel({
             </div>
           </TabsContent>
           <TabsContent value="selected">
-            {selectedTv && (
+            {selectedEquipment && (
               <div className="space-y-4">
                 <StatCard
                   title="Computer Name"
-                  value={selectedTv.name}
+                  value={selectedEquipment.name}
                   icon={<Info className="h-4 w-4" />}
                 />
                 <StatCard
                   title="Usage"
-                  value={`${selectedTv.usage} hours`}
+                  value={`${selectedEquipment.usage} hours`}
                   icon={<Clock className="h-4 w-4" />}
                 />
                 <StatCard
                   title="Status"
-                  value={selectedTv.status ? "On" : "Off"}
+                  value={selectedEquipment.status ? "On" : "Off"}
                   icon={<Power className="h-4 w-4" />}
                 />
                 <StatCard
                   title="Last Turn On"
-                  value={new Date(selectedTv.updatedAt).toLocaleString()}
+                  value={new Date(selectedEquipment.updatedAt).toLocaleString()}
                   icon={<Calendar className="h-4 w-4" />}
                 />
                 <StatCard
                   title="Owner ID"
-                  value={selectedTv.ownerId}
+                  value={selectedEquipment.ownerId}
                   icon={<User className="h-4 w-4" />}
                 />
                 <StatCard
                   title="Created At"
-                  value={new Date(selectedTv.createdAt).toLocaleString()}
+                  value={new Date(selectedEquipment.createdAt).toLocaleString()}
                   icon={<Calendar className="h-4 w-4" />}
                 />
-                <StatCard
-                  title="Updated At"
-                  value={new Date(selectedTv.updatedAt!).toLocaleString()}
-                  icon={<Calendar className="h-4 w-4" />}
-                />
+                {selectedEquipment.updatedAt && (
+                  <StatCard
+                    title="Updated At"
+                    value={new Date(
+                      selectedEquipment.updatedAt,
+                    ).toLocaleString()}
+                    icon={<Calendar className="h-4 w-4" />}
+                  />
+                )}
               </div>
             )}
           </TabsContent>

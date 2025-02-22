@@ -13,16 +13,21 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { useCreateTvMutation } from "~/hooks/api/tv/use-create-tv-mutation";
+import { useCreateEquipmentMutation } from "~/hooks/api/equipment/use-create-equipment-mutation";
 import { NetworkCreate, networkCreateSchema } from "~/lib/validations/networks";
-import { TvCreate, tvCreateSchema } from "~/lib/validations/tv";
+import {
+  EquipmentCreate,
+  equipmentCreateSchema,
+} from "~/lib/validations/equipment";
 
 interface NetworkCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-export default function NetworkCreateForm({ setIsOpen }: NetworkCreateFormProps) {
-  const { mutateAsync: add } = useCreateTvMutation();
+export default function NetworkCreateForm({
+  setIsOpen,
+}: NetworkCreateFormProps) {
+  const { mutateAsync: add } = useCreateEquipmentMutation();
 
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -34,7 +39,7 @@ export default function NetworkCreateForm({ setIsOpen }: NetworkCreateFormProps)
     disabled: isLoading,
   });
 
-  function onSubmit(data: TvCreate) {
+  function onSubmit(data: EquipmentCreate) {
     setIsLoading(true);
     const toastId = toast.loading("Adding Network...");
 

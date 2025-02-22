@@ -2,24 +2,25 @@
 
 import { useState } from "react";
 import TvCard from "~/components/equipment/card";
-import TvCreateDialog from "~/components/equipment/dialog";
+import EquipmentCreateDialog from "~/components/equipment/dialog";
 import TvStatisticsPanel from "~/components/equipment/statisctics";
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
-import { useGetAllTvsQuery } from "~/hooks/api/tv/use-get-all-tvs-query";
-import { TvResponse } from "~/lib/validations/tv";
+import { useGetAllEquipmentQuery } from "~/hooks/api/equipment/use-get-all-equipment-query";
+import { type EquipmentResponse } from "~/lib/validations/equipment";
 
 export default function EquipmentPage() {
-  const { data: equipmentData, isLoading } = useGetAllEquipmentDataQuery({});
-  const [selectedEquipment, setSelectedEquipment] = useState<EquipmentResponse | null>(null);
+  const { data: equipmentData, isLoading } = useGetAllEquipmentQuery({});
+  const [selectedEquipment, setSelectedEquipment] =
+    useState<EquipmentResponse | null>(null);
 
   if (isLoading || !equipmentData) {
     return <div>Loading...</div>;
@@ -51,7 +52,7 @@ export default function EquipmentPage() {
       </header>
       <div className="flex w-full flex-1 flex-col gap-4 p-4">
         <h2 className="py-10 text-center text-3xl font-semibold tracking-tight">
-          Your Tvs
+          Your Equipment
         </h2>
         <div className="grid w-full auto-rows-min gap-4 md:grid-cols-3">
           <EquipmentCreateDialog />
@@ -67,7 +68,10 @@ export default function EquipmentPage() {
           <h2 className="py-10 text-center text-3xl font-semibold tracking-tight">
             Statistics
           </h2>
-          <TvStatisticsPanel equipmentData={equipmentData} selectedEquipment={selectedEquipment} />
+          <TvStatisticsPanel
+            equipmentData={equipmentData}
+            selectedEquipment={selectedEquipment}
+          />
         </div>
       </div>
     </SidebarInset>

@@ -1,7 +1,7 @@
 enum IdPrefix {
   COMPUTER = "pc_",
   LAMPS = "lamp_",
-  TV = "tv_",
+  EQUIPMENT = "eq_",
   ABSENTEE = "abs_",
   NETWORK = "net_",
 }
