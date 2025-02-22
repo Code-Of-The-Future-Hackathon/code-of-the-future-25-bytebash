@@ -1,4 +1,6 @@
 import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
+import { useDeleteAbsenteeMutation } from "~/hooks/api/absentee/use-delete-absentee-mutation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,8 +12,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { toast } from "sonner";
-import { useDeleteAbsenteeMutation } from "~/hooks/api/absentee/use-delete-absentee-mutation";
 
 type AbsenteerDeleteAlertProps = {
   id: string;

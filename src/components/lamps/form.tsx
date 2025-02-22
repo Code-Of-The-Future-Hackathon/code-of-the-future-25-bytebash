@@ -2,17 +2,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "~/components/ui/form";
 import { useCreateLampMutation } from "~/hooks/api/lamps/use-create-lamp-mutation";
 import { type LampsCreate, lampsCreateSchema } from "~/lib/validations/lamps";
 import { Button } from "../ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "~/components/ui/form";
 import { Input } from "../ui/input";
 
 type LampCreateFormProps = {

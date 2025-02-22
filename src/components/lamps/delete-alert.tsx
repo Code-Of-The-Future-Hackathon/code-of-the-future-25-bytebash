@@ -1,4 +1,6 @@
 import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
+import { useDeleteLampMutation } from "~/hooks/api/lamps/use-delete-lamps-mutation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,8 +12,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { toast } from "sonner";
-import { useDeleteLampMutation } from "~/hooks/api/lamps/use-delete-lamps-mutation";
 
 type LampDeleteAlertProps = {
   id: string;

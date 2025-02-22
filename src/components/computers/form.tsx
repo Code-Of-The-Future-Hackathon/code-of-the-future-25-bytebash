@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Monitor } from "lucide-react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -17,7 +18,6 @@ import {
   type ComputerCreate,
   computerCreateSchema,
 } from "~/lib/validations/computer";
-import {Monitor} from "lucide-react";
 
 interface ComputerCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
@@ -61,28 +61,32 @@ export default function ComputerCreateForm({
   }
 
   return (
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Computer Name</FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Monitor className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
-                        <Input placeholder="Enter computer name" {...field} className="pl-10" />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-              )}
-          />
-          <Button type="submit" className="w-full">
-            Add Computer
-          </Button>
-        </form>
-      </Form>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Computer Name</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <Monitor className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+                  <Input
+                    placeholder="Enter computer name"
+                    {...field}
+                    className="pl-10"
+                  />
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" className="w-full">
+          Add Computer
+        </Button>
+      </form>
+    </Form>
   );
 }
