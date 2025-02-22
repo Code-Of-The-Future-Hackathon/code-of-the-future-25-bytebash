@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import TvCard from "~/components/tvs/card";
-import TvCreateDialog from "~/components/tvs/dialog";
-import TvStatisticsPanel from "~/components/tvs/statisctics";
+import TvCard from "~/components/equipment/card";
+import TvCreateDialog from "~/components/equipment/dialog";
+import TvStatisticsPanel from "~/components/equipment/statisctics";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -17,11 +17,11 @@ import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
 import { useGetAllTvsQuery } from "~/hooks/api/tv/use-get-all-tvs-query";
 import { TvResponse } from "~/lib/validations/tv";
 
-export default function TVPage() {
-  const { data: tvs, isLoading } = useGetAllTvsQuery({});
-  const [selectedTv, setSelectedComputer] = useState<TvResponse | null>(null);
+export default function EquipmentPage() {
+  const { data: equipmentData, isLoading } = useGetAllEquipmentDataQuery({});
+  const [selectedEquipment, setSelectedEquipment] = useState<EquipmentResponse | null>(null);
 
-  if (isLoading || !tvs) {
+  if (isLoading || !equipmentData) {
     return <div>Loading...</div>;
   }
 
@@ -35,15 +35,15 @@ export default function TVPage() {
             <BreadcrumbItem className="hidden md:block">
               <BreadcrumbLink
                 href="#"
-                onClick={() => setSelectedComputer(null)}
+                onClick={() => setSelectedEquipment(null)}
               >
-                Tvs Dashboard
+                Equipment Dashboard
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>
               <BreadcrumbPage>
-                {selectedTv ? selectedTv.name : "Overview"}
+                {selectedEquipment ? selectedEquipment.name : "Overview"}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -54,12 +54,12 @@ export default function TVPage() {
           Your Tvs
         </h2>
         <div className="grid w-full auto-rows-min gap-4 md:grid-cols-3">
-          <TvCreateDialog />
-          {tvs.map((tv) => (
+          <EquipmentCreateDialog />
+          {equipmentData.map((equipment) => (
             <TvCard
-              key={tv.id}
-              tv={tv}
-              onClick={() => setSelectedComputer(tv)}
+              key={equipment.id}
+              equipment={equipment}
+              onClick={() => setSelectedEquipment(equipment)}
             />
           ))}
         </div>
@@ -67,7 +67,7 @@ export default function TVPage() {
           <h2 className="py-10 text-center text-3xl font-semibold tracking-tight">
             Statistics
           </h2>
-          <TvStatisticsPanel tvs={tvs} selectedTv={selectedTv} />
+          <TvStatisticsPanel equipmentData={equipmentData} selectedEquipment={selectedEquipment} />
         </div>
       </div>
     </SidebarInset>

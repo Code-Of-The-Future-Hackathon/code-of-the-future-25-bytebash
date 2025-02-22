@@ -9,9 +9,9 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../ui/dialog";
-import TvCreateForm from "./form";
+import EquipmentCreateForm from "./form";
 
-export default function TvCreateDialog() {
+export default function EquipmentCreateDialog() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -24,7 +24,7 @@ export default function TvCreateDialog() {
           <div className="flex flex-col items-center justify-center space-y-2">
             <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
             <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
-              Add a Tv
+              Add an Equipment
             </span>
           </div>
         </Button>
@@ -33,7 +33,7 @@ export default function TvCreateDialog() {
         <DialogTitle className="mb-6 text-center text-2xl font-semibold">
           Add a New Tv
         </DialogTitle>
-        <TvCreateForm setIsOpen={setIsOpen} />
+        <EquipmentCreateForm setIsOpen={setIsOpen} />
       </DialogContent>
     </Dialog>
   );

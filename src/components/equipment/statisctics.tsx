@@ -2,21 +2,20 @@ import { Calendar, Clock, Info, Monitor, Power, User } from "lucide-react";
 import type React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { TvResponse } from "~/lib/validations/tv";
 
 interface StatisticsPanelProps {
-  tvs: TvResponse[];
-  selectedTv: TvResponse | null;
+  equipmentData: EquipmentResponse[];
+  selectedEquipment: EquipmentResponse | null;
 }
-export default function TvStatisticsPanel({
-  tvs,
-  selectedTv,
+export default function EquipmentStatisticsPanel({
+  equipmentData: tvs,
+  selectedEquipment: selectedTv,
 }: StatisticsPanelProps) {
-  const totalUsage = tvs.reduce(
-    (sum, tv) => sum + Number.parseInt(tv.usage),
+  const totalUsage = equipmentData.reduce(
+    (sum, equipment) => sum + Number.parseInt(equipment.usage),
     0,
   );
-  const activeComputers = tvs.filter((tv) => tv.status).length;
+  const activeComputers = equipmentData.filter((equipment) => equipment.status).length;
 
   return (
     <Card className="w-full">

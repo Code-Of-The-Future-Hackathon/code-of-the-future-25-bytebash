@@ -13,22 +13,22 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 
-type TvDeleteAlertProps = {
+type EquipmentDeleteAlertProps = {
   id: string;
 };
-export default function TvDeleteAlert({ id }: TvDeleteAlertProps) {
-  const { mutateAsync: doDelete } = useDeleteTvMutation({ id });
+export default function EquipmentDeleteAlert({ id }: EquipmentDeleteAlertProps) {
+  const { mutateAsync: doDelete } = useDeleteEquipmentMutation({ id });
 
   async function onSubmit() {
-    const toastId = toast.loading("Deleting Tv...");
+    const toastId = toast.loading("Deleting Equipment...");
     doDelete()
       .then(() => {
-        toast.success("Tv Deleted!", {
+        toast.success("Equipment Deleted!", {
           id: toastId,
         });
       })
       .catch(() => {
-        toast.error("Failed to delete tv!", {
+        toast.error("Failed to delete equipment!", {
           id: toastId,
         });
       });
@@ -43,8 +43,8 @@ export default function TvDeleteAlert({ id }: TvDeleteAlertProps) {
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+          This action cannot be undone. This will permanently delete your
+          equipment.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
