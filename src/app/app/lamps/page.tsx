@@ -54,9 +54,11 @@ export default function LampsPage() {
             />
           ))}
         </div>
-        <div className="flex-1">
+        <div className="w-full lg:w-[350px] xl:w-[400px]">
+        <div className="sticky top-20">
           <StatisticsPanel lamps={lamps} selectedLamp={selectedLamp} />
         </div>
+      </div>
       </div>
     </SidebarInset>
   );
