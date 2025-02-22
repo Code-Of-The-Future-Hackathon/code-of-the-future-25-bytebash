@@ -34,7 +34,12 @@ export default function Page() {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="#">Computer Dashboard</BreadcrumbLink>
+              <BreadcrumbLink
+                href="#"
+                onClick={() => setSelectedComputer(null)}
+              >
+                Computer Dashboard
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>

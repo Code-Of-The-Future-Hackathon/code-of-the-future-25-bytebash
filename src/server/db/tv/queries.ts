@@ -21,11 +21,11 @@ export async function tvInsert({ create, ownerId }: TvInsertProps) {
   )[0];
 }
 
-interface TvGetAllProps {
+interface TvsGetAllProps {
   ownerId: string;
 }
 
-export async function tvGetAll({ ownerId }: TvGetAllProps) {
+export async function tvsGetAll({ ownerId }: TvsGetAllProps) {
   return db.select().from(tv).where(
     eq(tv.ownerId, ownerId), // Ensure ownership
   );

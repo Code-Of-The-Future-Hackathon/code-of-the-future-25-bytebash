@@ -6,14 +6,14 @@ import {
   tvCreateSchema,
   tvResponseSchema,
 } from "~/lib/validations/tv";
-import { tvGetAll, tvInsert } from "~/server/db/tv/queries";
+import { tvsGetAll, tvInsert } from "~/server/db/tv/queries";
 
 // get all tv
 export async function GET() {
   try {
     const { ownerId } = await authenticate();
 
-    const tv = await tvGetAll({
+    const tv = await tvsGetAll({
       ownerId,
     });
 

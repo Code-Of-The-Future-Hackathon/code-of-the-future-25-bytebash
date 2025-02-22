@@ -6,14 +6,14 @@ import {
   absenteeCreateSchema,
   absenteeResponseSchema,
 } from "~/lib/validations/absentee";
-import { absenteeGetAll, absenteeInsert } from "~/server/db/absentee/queries";
+import { absenteesGetAll, absenteeInsert } from "~/server/db/absentee/queries";
 
 // get all absentees
 export async function GET() {
   try {
     const { ownerId } = await authenticate();
 
-    const absentees = await absenteeGetAll({
+    const absentees = await absenteesGetAll({
       ownerId,
     });
 

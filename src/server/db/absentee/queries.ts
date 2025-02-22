@@ -21,11 +21,11 @@ export async function absenteeInsert({ create, ownerId }: AbsenteeInsertProps) {
   )[0];
 }
 
-interface AbsenteeGetAllProps {
+interface AbsenteesGetAllProps {
   ownerId: string;
 }
 
-export async function absenteeGetAll({ ownerId }: AbsenteeGetAllProps) {
+export async function absenteesGetAll({ ownerId }: AbsenteesGetAllProps) {
   return db.select().from(absentee).where(
     eq(absentee.ownerId, ownerId), // Ensure ownership
   );
