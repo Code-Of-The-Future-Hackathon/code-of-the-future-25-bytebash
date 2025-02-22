@@ -2,6 +2,7 @@ import { Clock, Power } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { TvResponse } from "~/lib/validations/tv";
+import TvDeleteAlert from "./delete-alert";
 
 export default function TvCard({
   tv,
@@ -38,6 +39,9 @@ export default function TvCard({
             <p className="text-sm text-muted-foreground">
               Last Active: {new Date(tv.updatedAt).toLocaleString()}
             </p>
+            <div className="flex justify-end">
+              <TvDeleteAlert id={tv.id} />
+            </div>
           </div>
         </CardContent>
         <div className="h-1 w-full origin-left scale-x-0 transform bg-gradient-to-r from-primary to-primary/50 transition-transform duration-300 group-hover:scale-x-100" />
