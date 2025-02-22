@@ -15,4 +15,5 @@ export const tvResponseSchema = z.object({
   createdAt: z.number(),
   updatedAt: z.number(),
 });
+
 export type TvResponse = z.infer<typeof tvResponseSchema>;
