@@ -1,16 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import * as React from "react";
 import ComputerCard from "~/components/computers/card";
 import ComputerCreateDialog from "~/components/computers/dialog";
-import StatisticsPanel from "~/components/computers/statistics";
+import ComputerStatisticsPanel from "~/components/computers/statistics";
 import { useGetAllComputersQuery } from "~/hooks/api/computers/use-get-all-computers-query";
-import { type ComputerResponse } from "~/lib/validations/computer";
 
 export default function ComputersPage() {
-  const { data: computers, isLoading } = useGetAllComputersQuery({});
-  const [selectedComputer, setSelectedComputer] =
-    useState<ComputerResponse | null>(null);
+  const { data: computers, isLoading } = useGetAllComputersQuery({
+    refetchInterval: 1000,
+  });
+  const [selectedComputerId, setSelectedComputerId] = React.useState<
+    string | null
+  >(null);
+  const selectedComputer = React.useMemo(
+    () =>
+      selectedComputerId
+        ? (computers?.find((c) => c.id === selectedComputerId) ?? null)
+        : null,
+    [selectedComputerId, computers],
+  );
 
   if (isLoading || !computers) {
     return <div>Loading...</div>;
@@ -24,12 +33,12 @@ export default function ComputersPage() {
           <ComputerCard
             key={computer.id}
             computer={computer}
-            onClick={() => setSelectedComputer(computer)}
+            onClick={() => setSelectedComputerId(computer.id)}
           />
         ))}
       </div>
       <div className="w-full max-w-[360px] border-l bg-sidebar-border p-4 px-2">
-        <StatisticsPanel
+        <ComputerStatisticsPanel
           computers={computers}
           selectedComputer={selectedComputer}
         />
