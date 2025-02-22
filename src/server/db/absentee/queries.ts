@@ -31,7 +31,7 @@ interface AbsenteeGetByIdProps {
   ownerId: string;
 }
 
-export async function computerGetById({ id, ownerId }: AbsenteeGetByIdProps) {
+export async function absenteeGetById({ id, ownerId }: AbsenteeGetByIdProps) {
   return (
     await db
       .select()
@@ -50,7 +50,7 @@ interface AbsenteeDeleteProps {
   ownerId: string;
 }
 
-export async function computerDelete({ id, ownerId }: AbsenteeDeleteProps) {
+export async function absenteeDelete({ id, ownerId }: AbsenteeDeleteProps) {
   return (
     await db
       .delete(absentee)
