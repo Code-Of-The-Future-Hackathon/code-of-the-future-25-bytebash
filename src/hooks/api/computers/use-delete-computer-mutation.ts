@@ -10,7 +10,7 @@ interface DeleteComputerMutationProps {
   id: string;
 }
 
-export function useCreateComputerMutation({ id }: DeleteComputerMutationProps) {
+export function useDeleteComputerMutation({ id }: DeleteComputerMutationProps) {
   const queryClient = useQueryClient();
 
   return useMutation<
