@@ -24,14 +24,14 @@ export default function EquipmentCreateDialog() {
           <div className="flex flex-col items-center justify-center space-y-2">
             <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
             <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
-              Add an Equipment
+              Add an equipment
             </span>
           </div>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogTitle className="mb-6 text-center text-2xl font-semibold">
-          Add a New Tv
+          Add a New Equipment
         </DialogTitle>
         <EquipmentCreateForm setIsOpen={setIsOpen} />
       </DialogContent>
