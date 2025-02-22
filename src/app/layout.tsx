@@ -16,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className={""}>
+      <body className="relative min-h-dvh bg-background">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ProvidersWithoutTheme>{children}</ProvidersWithoutTheme>
         </ThemeProvider>
