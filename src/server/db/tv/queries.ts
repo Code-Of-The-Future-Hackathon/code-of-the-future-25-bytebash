@@ -20,7 +20,7 @@ interface TvGetAllProps {
   ownerId: string;
 }
 
-export async function absenteeGetAll({ ownerId }: TvGetAllProps) {
+export async function tvGetAll({ ownerId }: TvGetAllProps) {
   return db.select().from(tv).where(
     eq(tv.ownerId, ownerId), // Ensure ownership
   );
@@ -31,7 +31,7 @@ interface TvGetByIdProps {
   ownerId: string;
 }
 
-export async function computerGetById({ id, ownerId }: TvGetByIdProps) {
+export async function tvGetById({ id, ownerId }: TvGetByIdProps) {
   return (
     await db
       .select()
@@ -50,7 +50,7 @@ interface TvDeleteProps {
   ownerId: string;
 }
 
-export async function computerDelete({ id, ownerId }: TvDeleteProps) {
+export async function tvDelete({ id, ownerId }: TvDeleteProps) {
   return (
     await db
       .delete(tv)

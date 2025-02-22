@@ -17,9 +17,9 @@ export const tv = pgTable("tv", {
   type: varchar("type", { length: 256 }),
   ownerId: varchar("owner_id", { length: 256 }).notNull(),
   createdAt: integer("created_at")
-    .default(sql`(EXTRACT(EPOCH FROM NOW()))`)
+    .default(sql`(EXTRACT (EPOCH FROM NOW()))`)
     .notNull(),
   updatedAt: integer("updated_at").$onUpdate(
-    () => sql`(EXTRACT(EPOCH FROM NOW()))`,
+    () => sql`(EXTRACT (EPOCH FROM NOW()))`,
   ),
 });

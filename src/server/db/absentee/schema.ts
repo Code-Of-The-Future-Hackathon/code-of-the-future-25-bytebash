@@ -15,7 +15,7 @@ export const absentee = pgTable("absentee", {
     .$default(() => generateId(IdPrefix.ABSENTEE)),
   className: varchar("class_name", { length: 256 }),
   absent: varchar("absent", { length: 256 }),
-  classStart: date("class-start"),
-  classEnd: date("class-start"),
+  classStart: integer("class-start"),
+  classEnd: integer("class-start"),
   ownerId: varchar("owner_id", { length: 256 }).notNull(),
 });
