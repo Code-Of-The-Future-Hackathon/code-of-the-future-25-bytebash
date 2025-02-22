@@ -17,6 +17,7 @@ import {
   type ComputerCreate,
   computerCreateSchema,
 } from "~/lib/validations/computer";
+import {Monitor} from "lucide-react";
 
 interface ComputerCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
@@ -60,25 +61,28 @@ export default function ComputerCreateForm({
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4 space-y-4">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Computer Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter computer name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" className="w-full">
-          Submit
-        </Button>
-      </form>
-    </Form>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Computer Name</FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Monitor className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                        <Input placeholder="Enter computer name" {...field} className="pl-10" />
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+              )}
+          />
+          <Button type="submit" className="w-full">
+            Add Computer
+          </Button>
+        </form>
+      </Form>
   );
 }
