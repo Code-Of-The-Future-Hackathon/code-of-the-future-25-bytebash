@@ -8,6 +8,7 @@ import { Button } from "~/components/ui/button"
 import { Activity, Play, Check } from "lucide-react"
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@radix-ui/react-accordion";
 import {Textarea} from "~/components/ui/textarea";
+import Footer from "~/components/ui/Footer";
 
 const LandingPage = () => {
   const [email, setEmail] = useState("")
@@ -547,93 +548,7 @@ const LandingPage = () => {
         </section>
 
         {/* Footer */}
-        <footer className="bg-background text-primary py-12">
-          <div className="mx-auto max-w-screen-2xl px-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <h3 className="text-lg text-primary font-semibold mb-4">About Us</h3>
-                <p className="text-primary">
-                  We&apos;re on a mission to make work easier and more productive for teams everywhere.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg text-primary font-semibold mb-4">Quick Links</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="text-primary hover:text-accent  transition-colors">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:text-accent  transition-colors">
-                      Features
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:text-accent transition-colors">
-                      Pricing
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:text-black transition-colors">
-                      Contact
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Legal</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black transition-colors">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black transition-colors">
-                      Terms of Service
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black transition-colors">
-                      Cookie Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Connect</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black transition-colors">
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black transition-colors">
-                      LinkedIn
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black transition-colors">
-                      Facebook
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-primary hover:dark:text-black   transition-colors">
-                      Instagram
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-12 pt-8 border-t border-gray-800 text-center text-primary">
-              <p>&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-
-        {/* Add remaining sections: Team, FAQ, Contact form, CTA, and Footer */}
+        <Footer/>
       </div>
   )
 }
