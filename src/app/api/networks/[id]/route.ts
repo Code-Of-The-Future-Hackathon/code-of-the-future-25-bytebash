@@ -3,7 +3,7 @@ import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import { NotFoundError } from "~/lib/exceptions";
 import { networkDelete } from "~/server/db/networks/queries";
-import { networkResponseSchema } from "~/lib/validations/networks";
+import { networkResponseSchema } from "~/lib/validations/network";
 
 interface IdProps {
   params: Promise<{ id: string }>;

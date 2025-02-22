@@ -2,7 +2,7 @@ import "server-only";
 import { and, eq } from "drizzle-orm";
 import { db } from "~/server/db";
 import { networks } from "~/server/db/networks/schema";
-import { NetworkCreate } from "~/lib/validations/networks";
+import { NetworkCreate } from "~/lib/validations/network";
 
 interface NetworkInsertProps {
   create: NetworkCreate;

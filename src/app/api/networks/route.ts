@@ -5,7 +5,7 @@ import {
   NetworkCreate,
   networkCreateSchema,
   networkResponseSchema,
-} from "~/lib/validations/networks";
+} from "~/lib/validations/network";
 import { networkInsert, networksGetAll } from "~/server/db/networks/queries";
 
 // get all absentees

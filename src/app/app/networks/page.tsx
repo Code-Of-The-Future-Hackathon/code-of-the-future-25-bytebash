@@ -3,7 +3,7 @@
 import { useState } from "react";
 import NetworkCard from "~/components/networks/card";
 import NetworkCreateDialog from "~/components/networks/dialog";
-import NetworkStatisticsPanel from "~/components/networks/statisctics";
+import NetworkStatisticsPanel from "~/components/networks/statistics";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,7 +15,7 @@ import {
 import { Separator } from "~/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "~/components/ui/sidebar";
 import { useGetAllNetworksQuery } from "~/hooks/api/networks/use-get-all-networks-query";
-import { type NetworkResponse } from "~/lib/validations/networks";
+import { type NetworkResponse } from "~/lib/validations/network";
 
 export default function NetworksPage() {
   const { data: networks, isLoading } = useGetAllNetworksQuery({});

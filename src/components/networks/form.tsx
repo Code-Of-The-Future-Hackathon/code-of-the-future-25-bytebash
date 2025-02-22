@@ -14,7 +14,7 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { useCreateEquipmentMutation } from "~/hooks/api/equipment/use-create-equipment-mutation";
-import { NetworkCreate, networkCreateSchema } from "~/lib/validations/networks";
+import { NetworkCreate, networkCreateSchema } from "~/lib/validations/network";
 import {
   EquipmentCreate,
   equipmentCreateSchema,

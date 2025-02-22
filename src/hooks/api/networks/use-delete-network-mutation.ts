@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
 import { axiosInstance } from "~/lib/axios";
-import { NetworkResponse } from "~/lib/validations/networks";
+import { NetworkResponse } from "~/lib/validations/network";
 
 interface DeleteNetworkMutationProps {
   id: string;

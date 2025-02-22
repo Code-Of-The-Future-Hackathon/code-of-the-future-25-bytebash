@@ -2,7 +2,7 @@ import { Calendar, Clock, Info, Monitor, Power, User } from "lucide-react";
 import type React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { NetworkResponse } from "~/lib/validations/networks";
+import { NetworkResponse } from "~/lib/validations/network";
 
 interface StatisticsPanelProps {
   networks: NetworkResponse[];

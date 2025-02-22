@@ -1,7 +1,7 @@
 import { useQuery, type UseQueryOptions } from "@tanstack/react-query";
 import { type AxiosError } from "axios";
 import { axiosInstance } from "~/lib/axios";
-import { NetworkResponse } from "~/lib/validations/networks";
+import { NetworkResponse } from "~/lib/validations/network";
 
 export function useGetAllNetworksQuery({
   ...options
