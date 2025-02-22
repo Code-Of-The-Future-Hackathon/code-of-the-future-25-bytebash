@@ -1,5 +1,6 @@
 import { AbsenteeResponse } from "~/lib/validations/absentee";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import AbsenteerDeleteAlert from "./delete-alert";
 
 export default function AbsenteeCard({
   absentee,
@@ -21,6 +22,9 @@ export default function AbsenteeCard({
         <p className="text-lg font-semibold">
           {absentee.classStart} - {absentee.classEnd}
         </p>
+        <div className="flex justify-end">
+          <AbsenteerDeleteAlert id={absentee.id} />
+        </div>
       </CardContent>
     </Card>
   );
