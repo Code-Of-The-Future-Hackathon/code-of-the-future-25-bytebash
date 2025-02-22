@@ -3,16 +3,16 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useCreateLampMutation } from "~/hooks/api/lamps/use-create-lamp-mutation";
-import { LampsCreate, lampsCreateSchema } from "~/lib/validations/lamps";
+import { type LampsCreate, lampsCreateSchema } from "~/lib/validations/lamps";
 import { Button } from "../ui/button";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "../ui/form";
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "~/components/ui/form";
 import { Input } from "../ui/input";
 
 type LampCreateFormProps = {
@@ -35,18 +35,18 @@ export default function LampCreateForm({ setIsOpen }: LampCreateFormProps) {
 
   function onSubmit(data: LampsCreate) {
     setIsLoading(true);
-    const toastId = toast.loading("Adding Computer...");
+    const toastId = toast.loading("Adding Lamp...");
 
     add(data)
       .then(() => {
-        toast.success("Computer Added!", {
+        toast.success("Lamp Added!", {
           id: toastId,
         });
 
         setIsOpen(false);
       })
       .catch(() => {
-        toast.error("Failed to add computer!", {
+        toast.error("Failed to add lamp!", {
           id: toastId,
         });
       })
@@ -64,7 +64,7 @@ export default function LampCreateForm({ setIsOpen }: LampCreateFormProps) {
             <FormItem>
               <FormLabel>Lamp Name</FormLabel>
               <FormControl>
-                <Input placeholder="Enter computer name" {...field} />
+                <Input placeholder="Enter lamp name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -77,7 +77,7 @@ export default function LampCreateForm({ setIsOpen }: LampCreateFormProps) {
             <FormItem>
               <FormLabel>Lamp Group Name</FormLabel>
               <FormControl>
-                <Input placeholder="Enter computer name" {...field} />
+                <Input placeholder="Enter lamp group name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
