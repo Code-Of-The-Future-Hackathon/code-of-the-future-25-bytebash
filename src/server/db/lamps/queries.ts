@@ -10,10 +10,15 @@ interface LampsInsertProps {
 }
 
 export async function lampsInsert({ create, ownerId }: LampsInsertProps) {
-  await db.insert(lamps).values({
-    groupName: create.groupName,
-    ownerId,
-  });
+  return (
+    await db
+      .insert(lamps)
+      .values({
+        groupName: create.groupName,
+        ownerId,
+      })
+      .returning()
+  )[0];
 }
 
 interface LampsGetAllProps {
