@@ -98,7 +98,7 @@ export default function ComputerCreateForm({
                     placeholder="Enter computer API key"
                     {...field}
                     className="pl-10"
-                    value={field.value}
+                    value={form.formState.defaultValues?.apiKey ?? field.value}
                   />
                 </div>
               </FormControl>
