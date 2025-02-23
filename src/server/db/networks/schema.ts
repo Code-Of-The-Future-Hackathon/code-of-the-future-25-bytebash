@@ -18,6 +18,11 @@ export const networks = pgTable("networks", {
     .default("0"),
   type: varchar("type", { length: 256 }),
   status: boolean("status").notNull().default(false),
+  ispName: varchar("isp_name", { length: 256 }),
+  ispOrganization: varchar("isp_organization", { length: 256 }),
+  txRetry: decimal("tx_retry", { precision: 10, scale: 2 }),
+  wanUptime: decimal("wan_uptime", { precision: 10, scale: 2 }),
+  apiKey: varchar("api_key", { length: 256 }).notNull().default("pk_1235678"),
   ownerId: varchar("owner_id", { length: 256 }).notNull(),
   createdAt: integer("created_at")
     .default(sql`(EXTRACT (EPOCH FROM NOW()))`)
