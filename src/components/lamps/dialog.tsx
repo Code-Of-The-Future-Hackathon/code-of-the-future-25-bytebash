@@ -17,7 +17,7 @@ export default function LampCreateDialog() {
       <DialogTrigger asChild>
         <Button
           variant="secondary"
-          className="h-full w-full flex-col items-center justify-center border-2 border-dashed bg-muted-foreground/15"
+          className="h-16 w-full flex-col items-center justify-center border-2 border-dashed bg-muted-foreground/15"
         >
           <Plus className="size-8" />
           Add a lamp
