@@ -15,6 +15,7 @@ export async function computerInsert({ create, ownerId }: ComputerInsertProps) {
       .insert(computers)
       .values({
         name: create.name,
+        apiKey: create.apiKey,
         ownerId,
       })
       .returning()
