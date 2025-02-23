@@ -1,5 +1,14 @@
 import { intlFormat } from "date-fns";
-import { Calendar, Clock, Info, Monitor, Power } from "lucide-react";
+import {
+  Activity,
+  ArrowDownUp,
+  Calendar,
+  Clock,
+  Globe,
+  Info,
+  Monitor,
+  Power,
+} from "lucide-react";
 import type React from "react";
 import { StatisticsCard } from "~/components/statistics-card";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -60,11 +69,6 @@ export default function NetworkStatisticsPanel({
                   icon={<Info className="size-4" />}
                 />
                 <StatisticsCard
-                  title="Traffic"
-                  value={`${selectedNetwork.traffic} GB`}
-                  icon={<Clock className="size-4" />}
-                />
-                <StatisticsCard
                   title="Status"
                   value={selectedNetwork.status ? "ON" : "OFF"}
                   icon={
@@ -76,6 +80,39 @@ export default function NetworkStatisticsPanel({
                     />
                   }
                 />
+                <StatisticsCard
+                  title="Traffic"
+                  value={`${selectedNetwork.traffic} GB`}
+                  icon={<ArrowDownUp className="size-4" />}
+                />
+                {selectedNetwork.ispName && (
+                  <StatisticsCard
+                    title="ISP Name"
+                    value={selectedNetwork.ispName}
+                    icon={<Globe className="size-4" />}
+                  />
+                )}
+                {selectedNetwork.ispOrganization && (
+                  <StatisticsCard
+                    title="ISP Organization"
+                    value={selectedNetwork.ispOrganization}
+                    icon={<Globe className="size-4" />}
+                  />
+                )}
+                {selectedNetwork.txRetry && (
+                  <StatisticsCard
+                    title="TX Retry"
+                    value={`${selectedNetwork.txRetry} %`}
+                    icon={<ArrowDownUp className="size-4" />}
+                  />
+                )}
+                {selectedNetwork.wanUptime && (
+                  <StatisticsCard
+                    title="WAN Uptime"
+                    value={`${selectedNetwork.wanUptime} %`}
+                    icon={<Activity className="size-4" />}
+                  />
+                )}
                 <StatisticsCard
                   title="Created At"
                   value={intlFormat(selectedNetwork.createdAt * 1000)}
