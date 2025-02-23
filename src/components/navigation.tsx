@@ -33,9 +33,9 @@ export default function Navigation() {
             <Image
               alt="ByteBash Logo"
               src="/logo.png"
-              width={100}
-              height={100}
-              className=""
+              width={256}
+              height={256}
+              className="w-32 dark:invert"
             />
           </Link>
         </div>

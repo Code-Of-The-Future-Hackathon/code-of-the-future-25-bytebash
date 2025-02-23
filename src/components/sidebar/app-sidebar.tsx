@@ -33,7 +33,7 @@ export function AppSidebar() {
             src="/logo.png"
             width={1024}
             height={1024}
-            className="flex w-full justify-center"
+            className="flex w-full justify-center dark:invert"
           />
         </Link>
       </SidebarHeader>
