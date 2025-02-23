@@ -72,13 +72,13 @@ export async function computerDelete({ id, ownerId }: ComputerDeleteProps) {
 interface ComputerStatsUpdateProps {
   id: string;
   stats: ComputerStats;
-  ownerId: string;
+  apiKey: string;
 }
 
 export async function computerStatsUpdate({
   id,
   stats,
-  ownerId,
+  apiKey,
 }: ComputerStatsUpdateProps) {
   return (
     await db
@@ -87,7 +87,7 @@ export async function computerStatsUpdate({
         usage: stats.usage,
         battery: stats.battery,
       })
-      .where(and(eq(computers.ownerId, ownerId), eq(computers.id, id)))
+      .where(and(eq(computers.apiKey, apiKey), eq(computers.id, id)))
       .returning()
   )[0];
 }
