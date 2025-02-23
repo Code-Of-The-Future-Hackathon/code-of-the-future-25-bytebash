@@ -7,7 +7,7 @@ import {
   Clock,
   Cpu,
   Info,
-  Monitor,
+  Laptop,
   Power,
 } from "lucide-react";
 import * as React from "react";
@@ -49,7 +49,7 @@ export default function ComputerStatisticsPanel({
               <StatisticsCard
                 title="Total Computers"
                 value={computers.length}
-                icon={<Monitor className="size-4" />}
+                icon={<Laptop className="size-4" />}
               />
               <StatisticsCard
                 title="Average CPU Usage"
