@@ -9,21 +9,19 @@ import { TestimonialsSection } from "~/components/home/testimonials";
 import Timeline from "~/components/home/timeline";
 import Navigation from "~/components/navigation";
 
-const LandingPage = () => {
+export default function HomePage() {
   return (
-    <div className="bg-background">
-      <Navigation/>
-      <HeroSection/>
+    <>
+      <Navigation />
+      <HeroSection />
       <FeatureSection />
-      <ContentSection/>
-      <PlansSection/>
-      <Timeline/>
-      <TestimonialsSection/>
-      <ContactSection/>
-      <GetStartedSection/>
+      <ContentSection />
+      <PlansSection />
+      <Timeline />
+      <TestimonialsSection />
+      <ContactSection />
+      <GetStartedSection />
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default LandingPage;
+}
