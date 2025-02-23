@@ -1,6 +1,9 @@
 import "server-only";
 import { and, desc, eq } from "drizzle-orm";
-import { type ComputerCreate, ComputerStats } from "~/lib/validations/computer";
+import {
+  type ComputerCreate,
+  type ComputerStats,
+} from "~/lib/validations/computer";
 import { db } from "~/server/db";
 import { computers } from "~/server/db/computers/schema";
 
@@ -88,7 +91,12 @@ export async function computerStatsUpdate({
         usage: stats.usage,
         battery: stats.battery,
       })
-      .where(and(eq(computers.apiKey, apiKey), eq(computers.id, id)))
+      .where(
+        and(
+          eq(computers.apiKey, apiKey), // Authenticate device
+          eq(computers.id, id),
+        ),
+      )
       .returning()
   )[0];
 }
