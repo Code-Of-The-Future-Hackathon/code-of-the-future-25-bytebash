@@ -1,4 +1,4 @@
-import { Activity, ArrowDownUp, Globe, Power } from "lucide-react";
+import { Activity, ArrowDownUp, Globe, Power, Tag } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import {
   Card,
@@ -41,6 +41,10 @@ export default function NetworkCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col justify-end gap-2 text-muted-foreground">
+        <div className="flex items-center">
+          <Tag className="mr-1 size-6 shrink-0" />
+          Type: <Badge className="ml-1">{network.type}</Badge>
+        </div>
         <div className="flex items-center">
           <ArrowDownUp className="mr-1 size-6 shrink-0" />
           Traffic:{" "}
