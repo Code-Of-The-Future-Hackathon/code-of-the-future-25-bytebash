@@ -18,15 +18,11 @@ export default function EquipmentCreateDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="outline"
-          className="group h-full w-full rounded-lg border-2 border-dashed transition-colors hover:border-primary hover:bg-primary/5"
+          variant="secondary"
+          className="h-full w-full flex-col items-center justify-center border-2 border-dashed bg-muted-foreground/15"
         >
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <Plus className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
-            <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
-              Add an equipment
-            </span>
-          </div>
+          <Plus className="size-8" />
+          Add an equipment
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
