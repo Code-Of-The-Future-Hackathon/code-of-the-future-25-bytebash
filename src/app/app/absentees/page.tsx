@@ -15,8 +15,8 @@ export default function AbsenteesPage() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="flex">
-      <div className="flex h-full w-full flex-wrap justify-center gap-4 p-4">
+    <div className="flex h-full">
+      <div className="flex h-fit w-full flex-wrap justify-center gap-4 p-4">
         {absentees.map((absentee) => (
           <AbsenteeCard
             key={absentee.id}

@@ -17,8 +17,8 @@ export default function EquipmentPage() {
   }
 
   return (
-    <div className="flex">
-      <div className="flex h-full w-full flex-wrap justify-center gap-4 p-4">
+    <div className="flex h-full">
+      <div className="flex h-fit w-full flex-wrap justify-center gap-4 p-4">
         <EquipmentCreateDialog />
         {equipmentData.map((equipment) => (
           <EquipmentCard
