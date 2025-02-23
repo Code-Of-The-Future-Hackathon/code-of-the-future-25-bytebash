@@ -1,4 +1,4 @@
-import { ArrowDownUp, Clock, Power } from "lucide-react";
+import { Activity, ArrowDownUp, Globe, Power } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import {
   Card,
@@ -20,7 +20,7 @@ export default function NetworkCard({
 }) {
   return (
     <Card
-      className="group relative w-full max-w-[350px] cursor-pointer overflow-hidden transition-all duration-300"
+      className="group relative h-fit w-full max-w-[350px] cursor-pointer overflow-hidden transition-all duration-300"
       onClick={onClick}
     >
       <Badge
@@ -46,6 +46,20 @@ export default function NetworkCard({
           Traffic:{" "}
           <span className="ml-1 text-primary">{network.traffic} GB</span>
         </div>
+        {network.ispName && (
+          <div className="flex items-center">
+            <Globe className="mr-1 size-6 shrink-0" />
+            ISP Name:{" "}
+            <span className="ml-1 text-primary">{network.ispName}</span>
+          </div>
+        )}
+        {network.wanUptime && (
+          <div className="flex items-center">
+            <Activity className="mr-1 size-6 shrink-0" />
+            WAN Uptime:{" "}
+            <span className="ml-1 text-primary">{network.wanUptime} %</span>
+          </div>
+        )}
       </CardContent>
       <CardFooter>
         <div className="absolute bottom-2 right-2">
