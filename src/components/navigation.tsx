@@ -1,5 +1,6 @@
 "use client";
 
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,7 +45,8 @@ export default function Navigation() {
           className="rounded-md bg-foreground px-3 py-2 text-secondary"
         >
           <Link href="/app">
-            Register <ChevronRight />
+            <SignedOut>Register</SignedOut> <SignedIn>Dashboard</SignedIn>{" "}
+            <ChevronRight />
           </Link>
         </Button>
       </nav>
