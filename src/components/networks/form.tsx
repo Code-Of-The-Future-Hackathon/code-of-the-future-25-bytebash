@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Monitor, Network } from "lucide-react";
+import { Network } from "lucide-react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -13,13 +13,18 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { useCreateEquipmentMutation } from "~/hooks/api/equipment/use-create-equipment-mutation";
-import { NetworkCreate, networkCreateSchema } from "~/lib/validations/network";
 import {
-  EquipmentCreate,
-  equipmentCreateSchema,
-} from "~/lib/validations/equipment";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { useCreateNetworkMutation } from "~/hooks/api/networks/use-create-network-mutation";
+import {
+  type NetworkCreate,
+  networkCreateSchema,
+} from "~/lib/validations/network";
 
 interface NetworkCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
@@ -28,7 +33,7 @@ interface NetworkCreateFormProps {
 export default function NetworkCreateForm({
   setIsOpen,
 }: NetworkCreateFormProps) {
-  const { mutateAsync: add } = useCreateEquipmentMutation();
+  const { mutateAsync: add } = useCreateNetworkMutation();
 
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -41,7 +46,7 @@ export default function NetworkCreateForm({
     disabled: isLoading,
   });
 
-  function onSubmit(data: EquipmentCreate) {
+  function onSubmit(data: NetworkCreate) {
     setIsLoading(true);
     const toastId = toast.loading("Adding Network...");
 
@@ -54,7 +59,7 @@ export default function NetworkCreateForm({
         setIsOpen(false);
       })
       .catch(() => {
-        toast.error("Failed to add Network!", {
+        toast.error("Failed to add network!", {
           id: toastId,
         });
       })
