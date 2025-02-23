@@ -1,7 +1,7 @@
 "use client";
 
 import { formatDuration, intervalToDuration, intlFormat } from "date-fns";
-import { Calendar, Clock, Info, Monitor, Users } from "lucide-react";
+import { Calendar, Clock, Info, Monitor, UserMinus, Users } from "lucide-react";
 import * as React from "react";
 import { StatisticsCard } from "~/components/statistics-card";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -31,9 +31,9 @@ export default function AbsenteeStatisticsPanel({
           <TabsContent value="total">
             <div className="space-y-4">
               <StatisticsCard
-                title="Total Computers"
+                title="Total Absentees"
                 value={absentees.length}
-                icon={<Monitor className="size-4" />}
+                icon={<UserMinus className="size-4" />}
               />
             </div>
           </TabsContent>
