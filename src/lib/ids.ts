@@ -4,6 +4,7 @@ enum IdPrefix {
   EQUIPMENT = "eq_",
   ABSENTEE = "abs_",
   NETWORK = "net_",
+  API_KEY = "pk_",
 }
 
 export default IdPrefix;
