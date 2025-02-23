@@ -1,29 +1,75 @@
-# Create T3 App
+# ByteBash
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+ByteBash is a Next.js-powered application designed to monitor and manage various aspects of a school's infrastructure. It tracks student absenteeism, PC usage, peripheral devices, network status, and lighting conditions, ensuring optimal school operations.
 
-## What's next? How do I make an app with this?
+## Features
+- **Absentee Monitoring**: Tracks student attendance and reports absences.
+- **PC & Peripheral Tracking**: Monitors computer and connected device statuses.
+- **Network Monitoring**: Keeps track of network performance and uptime.
+- **Lighting Control**: Observes and manages lamp status within the school.
+- **User Authentication**: Powered by Clerk for seamless user management.
+- **Responsive UI**: Built with Radix UI components and TailwindCSS.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Tech Stack
+- **Framework**: [Next.js](https://nextjs.org/) (TypeScript)
+- **Authentication**: [Clerk](https://clerk.com/)
+- **Database**: PostgreSQL (via [Drizzle ORM](https://orm.drizzle.team/))
+- **State Management**: [TanStack React Query](https://tanstack.com/query/latest)
+- **UI Components**: Radix UI, TailwindCSS, Geist
+- **Charts & Data Visualization**: Recharts
+- **HTTP Requests**: Axios
+- **Form Handling**: React Hook Form + Zod Validation
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Installation & Setup
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Prerequisites
+Ensure you have the following installed:
+- Node.js (v18+)
+- PostgreSQL
+- pnpm
 
-## Learn More
+### Clone Repository
+```sh
+git clone https://github.com/your-repo-url.git
+cd bytebash
+```
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### Install Dependencies
+Using pnpm:
+```sh
+pnpm install
+```
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### Configure Environment Variables
+Create a `.env` file and configure the necessary environment variables:
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key"
+CLERK_SECRET_KEY="your_clerk_secret_key"
+DATABASE_URL="your_postgres_connection_string"
+NEXT_PUBLIC_API_URL="http://localhost:3000/api"
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Run Development Server
+```sh
+pnpm dev
+```
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-## How do I deploy this?
+## Dependencies
+This project relies on the following major dependencies:
+```json
+{"@clerk/nextjs": "^6.12.0", "@radix-ui/react-tooltip": "^1.1.8", "drizzle-orm": "^0.33.0", "axios": "^1.7.9", "recharts": "^2.15.1", "react-hook-form": "^7.54.2", "zod": "^3.24.2", "tailwindcss-animate": "^1.0.7"}
+```
+[View Full List](package.json)
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## Contributors
+- [Crea7orX](https://github.com/Crea7orX)
+- [Stoil100](https://github.com/Stoil100)
+- [Maximus019BG](https://github.com/Maximus019BG)
+- [SimoSabev](https://github.com/SimoSabev)
+
+## License
+This project is licensed under the MIT License.
+
+## Feedback & Issues
+If you encounter any issues or have suggestions, please open an issue on GitHub.
