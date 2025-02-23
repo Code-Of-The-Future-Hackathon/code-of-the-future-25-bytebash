@@ -35,7 +35,7 @@ export default function ComputerCreateForm({
     resolver: zodResolver(computerCreateSchema),
     defaultValues: {
       name: "",
-      apiKey:generateId(IdPrefix.API_KEY)
+      apiKey: generateId(IdPrefix.API_KEY),
     },
     disabled: isLoading,
   });
@@ -98,6 +98,7 @@ export default function ComputerCreateForm({
                     placeholder="Enter computer API key"
                     {...field}
                     className="pl-10"
+                    value={field.value}
                   />
                 </div>
               </FormControl>
