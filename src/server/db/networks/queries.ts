@@ -1,8 +1,11 @@
 import "server-only";
 import { and, eq } from "drizzle-orm";
+import {
+  type NetworkCreate,
+  type NetworkStats,
+} from "~/lib/validations/network";
 import { db } from "~/server/db";
 import { networks } from "~/server/db/networks/schema";
-import { NetworkCreate } from "~/lib/validations/network";
 
 interface NetworkInsertProps {
   create: NetworkCreate;
@@ -15,6 +18,7 @@ export async function networkInsert({ create, ownerId }: NetworkInsertProps) {
       .insert(networks)
       .values({
         name: create.name,
+        ...(create.apiKey && { apiKey: create.apiKey }),
         ownerId,
       })
       .returning()
@@ -62,6 +66,36 @@ export async function networkDelete({ id, ownerId }: NetworkDeleteProps) {
       .where(
         and(
           eq(networks.ownerId, ownerId), // Ensure ownership
+          eq(networks.id, id),
+        ),
+      )
+      .returning()
+  )[0];
+}
+
+interface NetworkStatsUpdateProps {
+  id: string;
+  stats: NetworkStats;
+  apiKey: string;
+}
+
+export async function networkStatsUpdate({
+  id,
+  stats,
+  apiKey,
+}: NetworkStatsUpdateProps) {
+  return (
+    await db
+      .update(networks)
+      .set({
+        ispName: stats.ispName,
+        ispOrganization: stats.ispOrganization,
+        txRetry: stats.txRetry,
+        wanUptime: stats.wanUptime,
+      })
+      .where(
+        and(
+          eq(networks.apiKey, apiKey), // Authenticate device
           eq(networks.id, id),
         ),
       )
