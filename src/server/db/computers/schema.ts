@@ -16,6 +16,7 @@ export const computers = pgTable("computers", {
   usage: decimal("usage", { precision: 10, scale: 2 }).notNull().default("0"),
   battery: integer("battery").notNull().default(0),
   status: boolean("status").notNull().default(false),
+  apiKey: varchar("api_key", { length: 256 }).notNull().default("pk_12345678"),
   lastTurnOnAt: integer("last_turn_on_at").notNull().default(0),
   ownerId: varchar("owner_id", { length: 256 }).notNull(),
   createdAt: integer("created_at")
