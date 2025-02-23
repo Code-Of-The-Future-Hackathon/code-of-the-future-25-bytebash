@@ -11,7 +11,7 @@ import { absenteesGetAll, absenteeInsert } from "~/server/db/absentees/queries";
 // get all absentees
 export async function GET() {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const absentees = await absenteesGetAll({
       ownerId,
@@ -26,7 +26,7 @@ export async function GET() {
 // create absentee
 export async function POST(request: NextRequest) {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const json = (await request.json()) as AbsenteeCreate;
     const create = absenteeCreateSchema.parse(json);

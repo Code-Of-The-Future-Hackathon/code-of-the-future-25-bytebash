@@ -11,7 +11,7 @@ import { computerInsert, computersGetAll } from "~/server/db/computers/queries";
 // get all computers
 export async function GET() {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const computers = await computersGetAll({
       ownerId,
@@ -26,7 +26,7 @@ export async function GET() {
 // create computer
 export async function POST(request: NextRequest) {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const json = (await request.json()) as ComputerCreate;
     const create = computerCreateSchema.parse(json);

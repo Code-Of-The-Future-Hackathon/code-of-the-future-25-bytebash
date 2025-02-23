@@ -13,7 +13,7 @@ interface IdProps {
 export async function DELETE(_request: NextRequest, props: IdProps) {
   try {
     const { id } = await props.params;
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const equipment = await equipmentDelete({
       id,

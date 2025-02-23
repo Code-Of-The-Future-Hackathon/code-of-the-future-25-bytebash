@@ -11,7 +11,7 @@ import { networkInsert, networksGetAll } from "~/server/db/networks/queries";
 // get all absentees
 export async function GET() {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const networks = await networksGetAll({
       ownerId,
@@ -26,7 +26,7 @@ export async function GET() {
 // create absentee
 export async function POST(request: NextRequest) {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const json = (await request.json()) as NetworkCreate;
     const create = networkCreateSchema.parse(json);

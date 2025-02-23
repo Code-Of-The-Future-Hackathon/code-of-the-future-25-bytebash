@@ -11,7 +11,7 @@ import { lampsGetAll, lampInsert } from "~/server/db/lamps/queries";
 // get all lamps
 export async function GET() {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const lamps = await lampsGetAll({
       ownerId,
@@ -26,7 +26,7 @@ export async function GET() {
 // create lamp
 export async function POST(request: NextRequest) {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const json = (await request.json()) as LampsCreate;
     const create = lampsCreateSchema.parse(json);

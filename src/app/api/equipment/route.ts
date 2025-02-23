@@ -14,7 +14,7 @@ import {
 // get all equipment
 export async function GET() {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const equipment = await equipmentGetAll({
       ownerId,
@@ -29,7 +29,7 @@ export async function GET() {
 // create equipment
 export async function POST(request: NextRequest) {
   try {
-    const { ownerId } = await authenticate();
+    const { ownerId } = await authenticate({});
 
     const json = (await request.json()) as EquipmentCreate;
     const create = equipmentCreateSchema.parse(json);
