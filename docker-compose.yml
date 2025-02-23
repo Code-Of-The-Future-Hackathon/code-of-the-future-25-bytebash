@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:17.2
+    container_name: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: cfhackathon
+      POSTGRES_USER: cfhackathon
+      POSTGRES_PASSWORD: cfhackathon
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  app:
+    build: .
+    container_name: app
+    restart: always
+    ports:
+      - '3000:3000'
+    env_file: .env
+    entrypoint: sh -c "corepack enable pnpm && pnpm run db:generate && pnpm run db:migrate && pnpm start"
+    depends_on:
+      - postgres
+    networks:
+      - internal
+
+volumes:
+  postgres-data:
+
+networks:
+  internal:
+    driver: bridge
