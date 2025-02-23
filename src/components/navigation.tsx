@@ -27,7 +27,7 @@ export default function Navigation() {
   return (
     <header
       ref={navRef} // Attach the ref here
-      className="fixed top-0 z-[999] w-full bg-background shadow-sm"
+      className="fixed top-0 z-[999] w-full border-b bg-background shadow-sm"
     >
       <nav className="flex items-center justify-between p-4">
         <div className="flex lg:flex-1">
