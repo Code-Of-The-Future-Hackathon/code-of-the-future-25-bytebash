@@ -101,31 +101,26 @@ export default function NetworkCreateForm({
         <FormField
           control={form.control}
           name="type"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Network Type</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select network type" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {networkTypes.map((type) => (
-                      <SelectItem key={type} value={type}>
-                        <p>{type}</p>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Network Type</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select network type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {networkTypes.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      <p>{type}</p>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
         />
         {selectedType === "Gateway" && (
           <FormField
