@@ -1,10 +1,11 @@
 import "server-only";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import {
   type NetworkCreate,
   type NetworkStats,
 } from "~/lib/validations/network";
 import { db } from "~/server/db";
+import { computers } from "~/server/db/computers/schema";
 import { networks } from "~/server/db/networks/schema";
 
 interface NetworkInsertProps {
@@ -31,7 +32,7 @@ interface NetworksGetAllProps {
 }
 
 export async function networksGetAll({ ownerId }: NetworksGetAllProps) {
-  return db.select().from(networks).where(
+  return db.select().from(networks).orderBy(desc(computers.createdAt)).where(
     eq(networks.ownerId, ownerId), // Ensure ownership
   );
 }

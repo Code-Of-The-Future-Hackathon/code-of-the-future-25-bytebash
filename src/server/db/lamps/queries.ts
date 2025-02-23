@@ -1,7 +1,8 @@
 import "server-only";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { db } from "~/server/db";
-import { LampsCreate } from "~/lib/validations/lamp";
+import { type LampsCreate } from "~/lib/validations/lamp";
+import { computers } from "~/server/db/computers/schema";
 import { lamps } from "~/server/db/lamps/schema";
 
 interface LampsInsertProps {
@@ -27,7 +28,7 @@ interface LampsGetAllProps {
 }
 
 export async function lampsGetAll({ ownerId }: LampsGetAllProps) {
-  return db.select().from(lamps).where(
+  return db.select().from(lamps).orderBy(desc(computers.createdAt)).where(
     eq(lamps.ownerId, ownerId), // Ensure ownership
   );
 }
