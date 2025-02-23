@@ -4,7 +4,9 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import * as React from "react";
 import { useEffect, useRef } from "react";
+import { ThemeToggle } from "~/components/ui/theme-toggle";
 import { Button } from "./ui/button";
 
 export default function Navigation() {
@@ -40,15 +42,18 @@ export default function Navigation() {
           </Link>
         </div>
 
-        <Button
-          asChild
-          className="rounded-md bg-foreground px-3 py-2 text-secondary"
-        >
-          <Link href="/app">
-            <SignedOut>Register</SignedOut> <SignedIn>Dashboard</SignedIn>{" "}
-            <ChevronRight />
-          </Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            asChild
+            className="rounded-md bg-foreground px-3 py-2 text-secondary"
+          >
+            <Link href="/app">
+              <SignedOut>Register</SignedOut> <SignedIn>Dashboard</SignedIn>{" "}
+              <ChevronRight />
+            </Link>
+          </Button>
+        </div>
       </nav>
     </header>
   );
