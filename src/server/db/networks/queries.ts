@@ -75,13 +75,13 @@ export async function networkDelete({ id, ownerId }: NetworkDeleteProps) {
 }
 
 interface NetworkStatsUpdateProps {
-  // id: string;
+  id?: string;
   stats: NetworkStats;
   apiKey: string;
 }
 
 export async function networkStatsUpdate({
-  // id,
+  id,
   stats,
   apiKey,
 }: NetworkStatsUpdateProps) {
@@ -93,11 +93,12 @@ export async function networkStatsUpdate({
         ispOrganization: stats.ispOrganization,
         txRetry: stats.txRetry,
         wanUptime: stats.wanUptime,
+        status: true,
       })
       .where(
         and(
           eq(networks.apiKey, apiKey), // Authenticate device
-          // eq(networks.id, id),
+          id ? eq(networks.id, id) : undefined,
         ),
       )
       .returning()
