@@ -1,9 +1,8 @@
 import "server-only";
 import { and, desc, eq } from "drizzle-orm";
-import { db } from "~/server/db";
 import { type AbsenteeCreate } from "~/lib/validations/absentee";
+import { db } from "~/server/db";
 import { absentee } from "~/server/db/absentees/schema";
-import { computers } from "~/server/db/computers/schema";
 
 interface AbsenteeInsertProps {
   create: AbsenteeCreate;
@@ -27,7 +26,7 @@ interface AbsenteesGetAllProps {
 }
 
 export async function absenteesGetAll({ ownerId }: AbsenteesGetAllProps) {
-  return db.select().from(absentee).orderBy(desc(computers.createdAt)).where(
+  return db.select().from(absentee).orderBy(desc(absentee.classStart)).where(
     eq(absentee.ownerId, ownerId), // Ensure ownership
   );
 }

@@ -5,7 +5,6 @@ import {
   type NetworkStats,
 } from "~/lib/validations/network";
 import { db } from "~/server/db";
-import { computers } from "~/server/db/computers/schema";
 import { networks } from "~/server/db/networks/schema";
 
 interface NetworkInsertProps {
@@ -32,7 +31,7 @@ interface NetworksGetAllProps {
 }
 
 export async function networksGetAll({ ownerId }: NetworksGetAllProps) {
-  return db.select().from(networks).orderBy(desc(computers.createdAt)).where(
+  return db.select().from(networks).orderBy(desc(networks.createdAt)).where(
     eq(networks.ownerId, ownerId), // Ensure ownership
   );
 }

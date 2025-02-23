@@ -1,8 +1,7 @@
 import "server-only";
 import { and, desc, eq } from "drizzle-orm";
-import { db } from "~/server/db";
 import { type EquipmentCreate } from "~/lib/validations/equipment";
-import { computers } from "~/server/db/computers/schema";
+import { db } from "~/server/db";
 import { equipment } from "~/server/db/equipment/schema";
 
 interface EquipmentInsertProps {
@@ -31,7 +30,7 @@ interface EquipmentGetAllProps {
 }
 
 export async function equipmentGetAll({ ownerId }: EquipmentGetAllProps) {
-  return db.select().from(equipment).orderBy(desc(computers.createdAt)).where(
+  return db.select().from(equipment).orderBy(desc(equipment.createdAt)).where(
     eq(equipment.ownerId, ownerId), // Ensure ownership
   );
 }
