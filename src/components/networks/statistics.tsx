@@ -40,8 +40,8 @@ export default function NetworkStatisticsPanel({
                 icon={<Monitor className="size-4" />}
               />
               <StatisticsCard
-                title="Total Usage"
-                value={`${totalTraffic} hours`}
+                title="Total Traffic"
+                value={`${totalTraffic} GB`}
                 icon={<Clock className="size-4" />}
               />
               <StatisticsCard
