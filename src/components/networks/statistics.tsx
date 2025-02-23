@@ -8,6 +8,7 @@ import {
   Info,
   Monitor,
   Power,
+  Tag,
 } from "lucide-react";
 import type React from "react";
 import { StatisticsCard } from "~/components/statistics-card";
@@ -79,6 +80,11 @@ export default function NetworkStatisticsPanel({
                       )}
                     />
                   }
+                />
+                <StatisticsCard
+                  title="Type"
+                  value={selectedNetwork.type}
+                  icon={<Tag className="size-4" />}
                 />
                 <StatisticsCard
                   title="Traffic"
