@@ -5,7 +5,7 @@ import LampCard from "~/components/lamps/card";
 import LampCreateDialog from "~/components/lamps/dialog";
 import LampStatisticsPanel from "~/components/lamps/statistics";
 import { useGetAllLampsQuery } from "~/hooks/api/lamps/use-get-all-lamps-query";
-import { type LampsResponse } from "~/lib/validations/lamps";
+import { type LampsResponse } from "~/lib/validations/lamp";
 
 export default function LampsPage() {
   const { data: lamps, isLoading } = useGetAllLampsQuery({});

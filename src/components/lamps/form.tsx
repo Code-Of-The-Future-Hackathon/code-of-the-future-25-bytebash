@@ -3,15 +3,15 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "~/components/ui/form";
 import { useCreateLampMutation } from "~/hooks/api/lamps/use-create-lamp-mutation";
-import { type LampsCreate, lampsCreateSchema } from "~/lib/validations/lamps";
+import { type LampsCreate, lampsCreateSchema } from "~/lib/validations/lamp";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 

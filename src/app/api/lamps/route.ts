@@ -5,7 +5,7 @@ import {
   LampsCreate,
   lampsCreateSchema,
   lampsResponseSchema,
-} from "~/lib/validations/lamps";
+} from "~/lib/validations/lamp";
 import { lampsGetAll, lampInsert } from "~/server/db/lamps/queries";
 
 // get all lamps

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
 import { axiosInstance } from "~/lib/axios";
-import { LampsResponse } from "~/lib/validations/lamps";
+import { LampsResponse } from "~/lib/validations/lamp";
 
 interface DeleteLampsMutationProps {
   id: string;

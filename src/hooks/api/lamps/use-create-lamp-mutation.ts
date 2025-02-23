@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
 import { axiosInstance } from "~/lib/axios";
-import { type LampsCreate, type LampsResponse } from "~/lib/validations/lamps";
+import { type LampsCreate, type LampsResponse } from "~/lib/validations/lamp";
 
 export function useCreateLampMutation() {
   const queryClient = useQueryClient();

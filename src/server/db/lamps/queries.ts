@@ -1,7 +1,7 @@
 import "server-only";
 import { and, eq } from "drizzle-orm";
 import { db } from "~/server/db";
-import { LampsCreate } from "~/lib/validations/lamps";
+import { LampsCreate } from "~/lib/validations/lamp";
 import { lamps } from "~/server/db/lamps/schema";
 
 interface LampsInsertProps {

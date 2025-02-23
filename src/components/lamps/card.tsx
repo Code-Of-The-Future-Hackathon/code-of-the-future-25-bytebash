@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
-import type { LampsResponse } from "~/lib/validations/lamps";
+import type { LampsResponse } from "~/lib/validations/lamp";
 
 export default function LampCard({
   lamp,

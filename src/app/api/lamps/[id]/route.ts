@@ -3,7 +3,7 @@ import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import { NotFoundError } from "~/lib/exceptions";
 import { lampDelete } from "~/server/db/lamps/queries";
-import { lampsResponseSchema } from "~/lib/validations/lamps";
+import { lampsResponseSchema } from "~/lib/validations/lamp";
 
 interface IdProps {
   params: Promise<{ id: string }>;

@@ -7,7 +7,7 @@ import { StatisticsCard } from "~/components/statistics-card";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { cn } from "~/lib/utils";
-import { type LampsResponse } from "~/lib/validations/lamps";
+import { type LampsResponse } from "~/lib/validations/lamp";
 
 interface StatisticsPanelProps {
   lamps: LampsResponse[];
