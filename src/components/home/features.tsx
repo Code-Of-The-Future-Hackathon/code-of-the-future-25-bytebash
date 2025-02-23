@@ -1,11 +1,11 @@
 "use client";
 
 import {
-    ChevronRight,
-    LucideIcon,
-    MonitorSmartphone,
-    UserX,
-    Wifi,
+  ChevronRight,
+  type LucideIcon,
+  MonitorSmartphone,
+  UserX,
+  Wifi,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";

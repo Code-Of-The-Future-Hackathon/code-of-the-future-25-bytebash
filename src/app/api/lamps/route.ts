@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import {
-  LampsCreate,
+  type LampsCreate,
   lampsCreateSchema,
   lampsResponseSchema,
 } from "~/lib/validations/lamp";
-import { lampsGetAll, lampInsert } from "~/server/db/lamps/queries";
+import { lampInsert, lampsGetAll } from "~/server/db/lamps/queries";
 
 // get all lamps
 export async function GET() {

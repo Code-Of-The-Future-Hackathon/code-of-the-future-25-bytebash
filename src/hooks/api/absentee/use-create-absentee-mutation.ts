@@ -1,7 +1,10 @@
-import { axiosInstance } from "~/lib/axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
-import { AbsenteeCreate, AbsenteeResponse } from "~/lib/validations/absentee";
+import { axiosInstance } from "~/lib/axios";
+import {
+  type AbsenteeCreate,
+  type AbsenteeResponse,
+} from "~/lib/validations/absentee";
 
 export function useCreateAbsenteeMutation() {
   const queryClient = useQueryClient();

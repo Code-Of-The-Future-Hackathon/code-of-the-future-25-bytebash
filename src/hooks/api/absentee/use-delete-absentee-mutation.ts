@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
 import { axiosInstance } from "~/lib/axios";
-import {AbsenteeResponse} from "~/lib/validations/absentee";
+import { type AbsenteeResponse } from "~/lib/validations/absentee";
 
 interface DeleteAbsenteeMutationProps {
   id: string;

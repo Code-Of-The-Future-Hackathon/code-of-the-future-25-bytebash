@@ -1,7 +1,10 @@
-import { axiosInstance } from "~/lib/axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
-import { NetworkCreate, NetworkResponse } from "~/lib/validations/network";
+import { axiosInstance } from "~/lib/axios";
+import {
+  type NetworkCreate,
+  type NetworkResponse,
+} from "~/lib/validations/network";
 
 export function useCreateNetworkMutation() {
   const queryClient = useQueryClient();

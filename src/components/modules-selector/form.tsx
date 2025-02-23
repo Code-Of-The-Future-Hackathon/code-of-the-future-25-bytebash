@@ -1,21 +1,17 @@
 import {
   BookOpen,
-  Code,
   Fan,
-  Globe,
   Headphones,
   Lightbulb,
-  MessageSquare,
-  PenTool,
   Shield,
   Users,
   Utensils,
-  Video,
   Wifi,
 } from "lucide-react";
 import React from "react";
 import type { UseFormReturn } from "react-hook-form";
 import { Button } from "~/components/ui/button";
+import { Card, CardContent } from "~/components/ui/card";
 import { Checkbox } from "~/components/ui/checkbox";
 import {
   Form,
@@ -25,7 +21,6 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form";
-import { Card, CardContent } from "~/components/ui/card";
 
 type ModulesSelectorFormProps = {
   form: UseFormReturn<{ modules: string[] }>;

@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { authenticate } from "~/lib/auth";
 import { handleError } from "~/lib/error";
 import {
-  AbsenteeCreate,
+  type AbsenteeCreate,
   absenteeCreateSchema,
   absenteeResponseSchema,
 } from "~/lib/validations/absentee";
-import { absenteesGetAll, absenteeInsert } from "~/server/db/absentees/queries";
+import { absenteeInsert, absenteesGetAll } from "~/server/db/absentees/queries";
 
 // get all absentees
 export async function GET() {

@@ -1,12 +1,4 @@
-import { sql } from "drizzle-orm";
-import {
-  boolean,
-  date,
-  decimal,
-  integer,
-  pgTable,
-  varchar,
-} from "drizzle-orm/pg-core";
+import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import IdPrefix, { generateId } from "~/lib/ids";
 
 export const absentee = pgTable("absentees", {
