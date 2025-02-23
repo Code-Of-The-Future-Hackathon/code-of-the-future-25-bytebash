@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Monitor } from "lucide-react";
+import { Key, Monitor } from "lucide-react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -14,6 +14,7 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { useCreateComputerMutation } from "~/hooks/api/computers/use-create-computer-mutation";
+import IdPrefix, { generateId } from "~/lib/ids";
 import {
   type ComputerCreate,
   computerCreateSchema,
@@ -34,6 +35,7 @@ export default function ComputerCreateForm({
     resolver: zodResolver(computerCreateSchema),
     defaultValues: {
       name: "",
+      apiKey:generateId(IdPrefix.API_KEY)
     },
     disabled: isLoading,
   });
@@ -74,6 +76,26 @@ export default function ComputerCreateForm({
                   <Monitor className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
                   <Input
                     placeholder="Enter computer name"
+                    {...field}
+                    className="pl-10"
+                  />
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="apiKey"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Computer API Key</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <Key className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+                  <Input
+                    placeholder="Enter computer API key"
                     {...field}
                     className="pl-10"
                   />
