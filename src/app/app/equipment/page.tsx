@@ -3,7 +3,7 @@
 import { useState } from "react";
 import EquipmentCard from "~/components/equipment/card";
 import EquipmentCreateDialog from "~/components/equipment/dialog";
-import StatisticsPanel from "~/components/equipment/statistics";
+import EquipmentStatisticsPanel from "~/components/equipment/statistics";
 import { useGetAllEquipmentQuery } from "~/hooks/api/equipment/use-get-all-equipment-query";
 import { type EquipmentResponse } from "~/lib/validations/equipment";
 
@@ -29,7 +29,7 @@ export default function EquipmentPage() {
         ))}
       </div>
       <div className="h-full w-full max-w-[360px] border-l bg-sidebar-border p-4 px-2">
-        <StatisticsPanel
+        <EquipmentStatisticsPanel
           equipmentData={equipmentData}
           selectedEquipment={selectedEquipment}
         />

@@ -1,4 +1,5 @@
-import { Calendar, Clock, Info, Monitor, Power, Tag, User } from "lucide-react";
+import { intlFormat } from "date-fns";
+import { Calendar, Clock, Info, Monitor, Power, Tag } from "lucide-react";
 import type React from "react";
 import { StatisticsCard } from "~/components/statistics-card";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -84,7 +85,7 @@ export default function EquipmentStatisticsPanel({
                 />
                 <StatisticsCard
                   title="Created At"
-                  value={new Date(selectedEquipment.createdAt).toLocaleString()}
+                  value={intlFormat(selectedEquipment.createdAt * 1000)}
                   icon={<Calendar className="size-4" />}
                 />
               </div>
