@@ -18,6 +18,7 @@ export async function networkInsert({ create, ownerId }: NetworkInsertProps) {
       .insert(networks)
       .values({
         name: create.name,
+        type: create.type,
         ...(create.apiKey && { apiKey: create.apiKey }),
         ownerId,
       })
@@ -74,13 +75,13 @@ export async function networkDelete({ id, ownerId }: NetworkDeleteProps) {
 }
 
 interface NetworkStatsUpdateProps {
-  id: string;
+  // id: string;
   stats: NetworkStats;
   apiKey: string;
 }
 
 export async function networkStatsUpdate({
-  id,
+  // id,
   stats,
   apiKey,
 }: NetworkStatsUpdateProps) {
@@ -96,7 +97,7 @@ export async function networkStatsUpdate({
       .where(
         and(
           eq(networks.apiKey, apiKey), // Authenticate device
-          eq(networks.id, id),
+          // eq(networks.id, id),
         ),
       )
       .returning()
