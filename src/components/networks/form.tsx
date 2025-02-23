@@ -1,5 +1,7 @@
+"use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Network } from "lucide-react";
+import { Key, Network } from "lucide-react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -30,6 +32,8 @@ interface NetworkCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
+const networkTypes = ["Gateway", "Access Point", "Switch"];
+
 export default function NetworkCreateForm({
   setIsOpen,
 }: NetworkCreateFormProps) {
@@ -42,6 +46,7 @@ export default function NetworkCreateForm({
     defaultValues: {
       name: "",
       type: "Gateway",
+      apiKey: null,
     },
     disabled: isLoading,
   });
@@ -67,6 +72,8 @@ export default function NetworkCreateForm({
         setIsLoading(false);
       });
   }
+
+  const selectedType = form.watch("type");
 
   return (
     <Form {...form}>
@@ -94,27 +101,55 @@ export default function NetworkCreateForm({
         <FormField
           control={form.control}
           name="type"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Network Type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select network type" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {["Gateway", "Access Point", "Switch"].map((type) => (
-                    <SelectItem key={type} value={type}>
-                      <p>{type}</p>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Network Type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select network type" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {networkTypes.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        <p>{type}</p>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
         />
+        {selectedType === "Gateway" && (
+          <FormField
+            control={form.control}
+            name="apiKey"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Ubiquiti API Key</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Key className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+                    <Input
+                      placeholder="Enter API key"
+                      {...field}
+                      className="pl-10"
+                      value={field.value ?? ""}
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
         <Button type="submit" className="w-full">
           Add Network
         </Button>
