@@ -16,7 +16,7 @@ export default function AppLayout({
           <SidebarInset>
             <div className="flex flex-1 flex-col">
               <Header />
-              <main className="flex-1">{children}</main>
+              <main className="min-h-[80dvh] flex-1">{children}</main>
               <Footer />
             </div>
           </SidebarInset>
