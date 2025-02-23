@@ -90,6 +90,7 @@ export async function computerStatsUpdate({
       .set({
         usage: stats.usage,
         battery: stats.battery,
+        status: true,
       })
       .where(
         and(

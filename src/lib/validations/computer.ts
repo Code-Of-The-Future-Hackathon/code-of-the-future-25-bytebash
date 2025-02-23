@@ -13,7 +13,6 @@ export const computerResponseSchema = z.object({
   usage: z.string(),
   battery: z.number(),
   status: z.boolean(),
-  lastTurnOnAt: z.number(),
   ownerId: z.string(),
   createdAt: z.number(),
   updatedAt: z.number().nullable(),

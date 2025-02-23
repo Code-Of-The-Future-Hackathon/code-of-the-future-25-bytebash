@@ -94,15 +94,12 @@ export default function ComputerStatisticsPanel({
                   icon={<Battery className="size-4" />}
                 />
                 <StatisticsCard
-                  title="Last Turn On"
+                  title="Last Active"
                   value={
-                    selectedComputer.lastTurnOnAt
-                      ? formatDistanceToNow(
-                          selectedComputer.lastTurnOnAt * 1000,
-                          {
-                            addSuffix: true,
-                          },
-                        )
+                    selectedComputer.updatedAt
+                      ? formatDistanceToNow(selectedComputer.updatedAt * 1000, {
+                          addSuffix: true,
+                        })
                       : "N/A"
                   }
                   icon={<Clock className="size-4" />}
