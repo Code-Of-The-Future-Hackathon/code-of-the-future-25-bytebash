@@ -40,6 +40,15 @@ interface EquipmentCreateFormProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
+const equipmentTypes = [
+  { value: "TV", icon: Tv },
+  { value: "Air Conditioner", icon: AirVent },
+  { value: "Projector", icon: Projector },
+  { value: "Sound", icon: Speaker },
+  { value: "Ventilation", icon: Fan },
+  { value: "Smart Board", icon: Presentation },
+];
+
 export default function EquipmentCreateForm({
   setIsOpen,
 }: EquipmentCreateFormProps) {
@@ -77,15 +86,6 @@ export default function EquipmentCreateForm({
         setIsLoading(false);
       });
   }
-
-  const equipmentTypes = [
-    { value: "TV", icon: Tv },
-    { value: "Air Conditioner", icon: AirVent },
-    { value: "Projector", icon: Projector },
-    { value: "Sound", icon: Speaker },
-    { value: "Ventilation", icon: Fan },
-    { value: "Smart Board", icon: Presentation },
-  ];
 
   const selectedType = form.watch("type");
   const SelectedIcon =
