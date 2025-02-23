@@ -3,7 +3,7 @@
 import { useState } from "react";
 import LampCard from "~/components/lamps/card";
 import LampCreateDialog from "~/components/lamps/dialog";
-import StatisticsPanel from "~/components/lamps/statistics";
+import LampStatisticsPanel from "~/components/lamps/statistics";
 import { useGetAllLampsQuery } from "~/hooks/api/lamps/use-get-all-lamps-query";
 import { type LampsResponse } from "~/lib/validations/lamps";
 
@@ -28,7 +28,7 @@ export default function LampsPage() {
         ))}
       </div>
       <div className="w-full max-w-[360px] border-l bg-sidebar-border p-4 px-2">
-        <StatisticsPanel lamps={lamps} selectedLamp={selectedLamp} />
+        <LampStatisticsPanel lamps={lamps} selectedLamp={selectedLamp} />
       </div>
     </div>
   );

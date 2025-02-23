@@ -1,6 +1,7 @@
 "use client";
 
-import { Calendar, Clock, Info, Lamp, Monitor, Power, Tag } from "lucide-react";
+import { formatDistanceToNow, intlFormat } from "date-fns";
+import { Calendar, Clock, Info, Lamp, Power, Tag } from "lucide-react";
 import * as React from "react";
 import { StatisticsCard } from "~/components/statistics-card";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -87,14 +88,16 @@ export default function LampStatisticsPanel({
                   title="Last Turn On"
                   value={
                     selectedLamp.lastTurnOnAt
-                      ? new Date(selectedLamp.lastTurnOnAt).toLocaleString()
+                      ? formatDistanceToNow(selectedLamp.lastTurnOnAt * 1000, {
+                          addSuffix: true,
+                        })
                       : "N/A"
                   }
                   icon={<Calendar className="size-4" />}
                 />
                 <StatisticsCard
                   title="Created At"
-                  value={new Date(selectedLamp.createdAt).toLocaleString()}
+                  value={intlFormat(selectedLamp.createdAt * 1000)}
                   icon={<Calendar className="size-4" />}
                 />
               </div>
