@@ -8,7 +8,9 @@ import { useGetAllNetworksQuery } from "~/hooks/api/networks/use-get-all-network
 import { type NetworkResponse } from "~/lib/validations/network";
 
 export default function NetworksPage() {
-  const { data: networks, isLoading } = useGetAllNetworksQuery({});
+  const { data: networks, isLoading } = useGetAllNetworksQuery({
+    refetchInterval: 1000,
+  });
   const [selectedNetwork, setSelectedNetwork] =
     useState<NetworkResponse | null>(null);
 
