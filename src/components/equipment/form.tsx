@@ -89,7 +89,7 @@ export default function EquipmentCreateForm({
 
   const selectedType = form.watch("type");
   const SelectedIcon =
-    equipmentTypes.find((type) => type.value === selectedType)?.icon || Monitor;
+    equipmentTypes.find((type) => type.value === selectedType)?.icon ?? Monitor;
 
   return (
     <Form {...form}>
